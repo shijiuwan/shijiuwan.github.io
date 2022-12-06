@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/W3.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/W1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shijiuwan.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="NTT 的中文名称为快速数论变换，英文全称为 Number-theoretic transform，是 FFT 在数论基础上的实现，可以避免FFT的复数运算中的精度损失。 NTT 实际上是将 FFT 中的复数运算巧妙的替换为了整数运算。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NTT学习笔记">
+<meta property="og:url" content="http://shijiuwan.github.io/NTT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Wuyanru&amp;#39s blog">
+<meta property="og:description" content="NTT 的中文名称为快速数论变换，英文全称为 Number-theoretic transform，是 FFT 在数论基础上的实现，可以避免FFT的复数运算中的精度损失。 NTT 实际上是将 FFT 中的复数运算巧妙的替换为了整数运算。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-08T13:47:28.000Z">
+<meta property="article:modified_time" content="2022-08-08T13:47:28.000Z">
+<meta property="article:author" content="Wuyanru">
+<meta property="article:tag" content="多项式">
+<meta property="article:tag" content="NTT">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shijiuwan.github.io/NTT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>NTT学习笔记 | Wuyanru&#39s blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Wuyanru&#39s blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/NTT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Wuyanru.png">
+      <meta itemprop="name" content="Wuyanru">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuyanru&#39s blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NTT学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-08-08 21:47:28" itemprop="dateCreated datePublished" datetime="2022-08-08T21:47:28+08:00">2022-08-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">算法学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>NTT 的中文名称为快速数论变换，英文全称为 Number-theoretic transform，是 FFT 在数论基础上的实现，可以避免FFT的复数运算中的精度损失。</p>
+<p>NTT 实际上是将 FFT 中的复数运算巧妙的替换为了整数运算。</p>
+<span id="more"></span>
+<h2 id="原根"><a href="#原根" class="headerlink" title="原根"></a>原根</h2><p>若一个正整数 $ g $ 和一个质数 $ p $ 满足对于所有 $ 1\le i&lt;p $ ， $ g ^i\pmod p $ 的值互不相同。</p>
+<h2 id="NTT原理"><a href="#NTT原理" class="headerlink" title="NTT原理"></a>NTT原理</h2><p>实际上，NTT就是选取了适当的模数以及任何一个这个质数的原根，并用一些整数代替了复数（被代替的就是上面的 $ \omega_n^i $）。</p>
+<p>直接这样说估计没人懂，举个例子。</p>
+<p>就以最常见的 NTT 模数 $ 998244353 $ 和它的原根（之一）$ 3 $ 来举例。</p>
+<p>首先一个比较重要的地方，就是 $ 998244352=2^{23} \times 119 $，这是 NTT 模数的关键之一，这个模数减一必须是 $ 2 $ 的较大次幂的倍数。</p>
+<p>假设现在要进行 NTT 的多项式共有 $ n $ 项（和 FFT 一样，$ n $ 是 $ 2 $ 的整数次幂），那么用哪个数字代替 $ \omega_n^1 $ 比较合适呢？</p>
+<p>不难想到，用 $ 3^\frac{998244352}{n}\pmod{998244353} $ 代替 $ \omega_n^1 $，同理对于其他 $ i $ ，用 $ \left(3 ^\frac{998244352}{n}\right) ^i\pmod{998244353} $ 代替 $ \omega _n ^i$，这样就大功告成。</p>
+<p>此外将 FFT 的其他操作（加法，乘法，减法等）改成模意义下的运算，所有的复数都改成整数，就可以了。</p>
+<p>同理，假如使用一个质数 $ p $ 与它的原根 $ g $ 进行 NTT 时，使用 $ \left(g ^{\frac{p-1}{n}}\right) ^i\pmod p $ 代替 $ \omega_n^i $ 即可。</p>
+<h2 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明"></a>正确性证明</h2><p>不难发现，FFT 能够快速运算的运算在于复数的那三个性质。</p>
+<p>同时，这也是 NTT 可以快速计算的关键，因为我们刚刚对于 $ \omega_n^i $ 的取值也满足这些性质！</p>
+<p>下面我们来一条一条看。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\omega_n^n&=1&(1)
+\end{aligned}</script><p>证明：</p>
+<script type="math/tex; mode=display">
+\left(g^{\frac{p-1}{n}}\right)^n\equiv g^{p-1}\equiv 1\pmod p</script><p>注意，对于所有质数 $ p $ 都有 $ g^{p-1}\equiv 1\pmod p $。</p>
+<hr>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\omega^k_n&=\omega_{2n}^{2k}&(2)
+\end{aligned}</script><p>证明：</p>
+<script type="math/tex; mode=display">
+\left(g^{\frac{p-1}{2n}}\right)^{2k}\equiv g^{\frac{k(p-1)}{n}}\equiv \left(g^{\frac{p-1}{n}}\right)^k\pmod p</script><hr>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\omega_n^{k+\frac{n}{2}}&=-\omega_n^k&(3)
+\end{aligned}</script><p>证明：</p>
+<script type="math/tex; mode=display">
+\text{就是要证}\left(g^{\frac{p-1}{n}}\right)^{k+\frac{n}{2}}+\left(g^{\frac{p-1}{n}}\right)^k\equiv 0\pmod p</script><script type="math/tex; mode=display">
+\left(g^{\frac{p-1}{n}}\right)^{k+\frac{n}{2}}+\left(g^{\frac{p-1}{n}}\right)^k\equiv g^{\frac{k(p-1)}{n}}\times g^{\frac{p-1}{2}}+g^{\frac{k(p-1)}{n}}\equiv g^{\frac{k(p-1)}{n}}\times\left(g^{\frac{p-1}{2}}+1\right)\pmod p</script><p>注意到一定会有 $ g^{\frac{p-1}{2}}\equiv-1\pmod p $ </p>
+<p>所以这个式子的值为 $ 0 $ 。</p>
+<p>额，$ g^{\frac{p-1}{2}}\equiv-1\pmod p $ 似乎不算很显然，我们来证一下。</p>
+<p>首先，根据原根的性质，我们知道对于 $ 0\leqslant i &lt;p $ ，肯定恰好存在一个 $ i $ 使得 $ g^i \equiv -1\pmod p $ 。</p>
+<p>那么我们就知道，一定会有 $ g^{2i}=1\pmod p $ 。</p>
+<p>同时，我们知道，一定恰好存在一个 $ j $ 使得 $ g^j\equiv 1\pmod p $ （还是原根的性质），而我们知道 $ j=0 $。</p>
+<p>所以就会有 $ 2i\equiv 0\pmod {p-1} $ 。</p>
+<p>这个方程一共有两个解，$ i=0 $ 或 $ i=\dfrac{p-1}{2} $ 。</p>
+<p>显然，$ i=0 $ 不满足条件，因为 $ g^0=1 $。</p>
+<p>所以一定会有 $ g^{\frac{p-1}{2}}\equiv -1\pmod p $ 。</p>
+<p>NTT 就说完了。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/80789729">提交记录</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/kumgzeb0">代码</a></p>
+<p>加上快读和快些还能<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/80790614">快一点</a>。</p>
+<hr>
+<p>下面是几个模板呀。</p>
+<h2 id="多项式求逆"><a href="#多项式求逆" class="headerlink" title="多项式求逆"></a>多项式求逆</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4238">P4238 【模板】多项式乘法逆</a></p>
+<p>设原多项式为 $ f $ ，它的逆为 $ f^{-1} $。</p>
+<p>设 $ f_0=f\pmod{x^{\left\lceil\frac{n}{2}\right\rceil}} $ ，它的逆为 $ f^{-1}_0 $。</p>
+<p>则一定会有以下几个性质：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f\times f^{-1}&\equiv 1\pmod{x^{\left\lceil\frac{n}{2}\right\rceil}}&(1)\\
+f_0\times f^{-1}_0&\equiv 1\pmod{x^{\left\lceil\frac{n}{2}\right\rceil}}&(2)\\
+f^{-1}-f^{-1}_0&\equiv 0\pmod{x^{\left\lceil\frac{n}{2}\right\rceil}}&(3)
+\end{aligned}</script><p>则由 $ (3) $ 可得：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(f^{-1}-f^{-1}_0)^2&\equiv0&\pmod{x^n}\\
+f^{-2}+f_0^{-2}-2f^{-1}f^{-1}_0&\equiv0&\pmod{x^n}
+\end{aligned}</script><p>两边同时乘上 $ f $ 。（<del>其实只有一边</del>）</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f^{-1}+f_0^{-2}f-2f^{-1}_0&\equiv0&\pmod{x^n}\\
+f^{-1}&\equiv 2f^{-1}_0-f_0^{-2}f&\pmod{x^n}\\
+f^{-1}&\equiv f_0^{-1}(2-f_0^{-1}f)&\pmod{x^n}
+\end{aligned}</script><p>也就是说，只要我们知道了 $ f_0^{-1} $ ，就可以在 $ O(n\log n) $ 的时间内把 $ f^{-1} $ 算出来（NTT 把上面的式子卷一下）。</p>
+<p>时间复杂度 $ T(n)=T\left(\dfrac{n}{2}\right)+O(n\log n)=O(n\log n) $ 。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/80795192">提交记录</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/51ybpywh">代码</a></p>
+<h2 id="任意模数多项式乘法"><a href="#任意模数多项式乘法" class="headerlink" title="任意模数多项式乘法"></a>任意模数多项式乘法</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4245">P4245 【模板】任意模数多项式乘法</a></p>
+<p>我们可以发现，这道题里面的模数可能不能满足之前我们对模数的要求，甚至不是一个质数，所以我们不能直接进行 NTT。</p>
+<p>这里我使用的是三模数 NTT。</p>
+<p>具体做法就是我们找三个可以进行的 NTT 的模数，然后做三遍 NTT，最后使用 CRT 求出答案。</p>
+<p>这里我使用的三个模数分别为 $ 998244353=2^{23}\times 119+1$ , $985661441=2^{22}\times 235+1$ , $1004535809=2^{21}\times 479+1 $ 。</p>
+<p>直接做就可以了。</p>
+<p>然而最后的 CRT 还是有一些细节的($ p_1\times p_2\times p_3&gt;10^{19}$)，因为模数个数比较少，所以我们可以手颓柿子：</p>
+<p>首先我们知道这些：</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+x\equiv a_1\pmod{p_1}\\
+x\equiv a_2\pmod{p_2}\\
+x\equiv a_3\pmod{p_3}\\
+\end{cases}</script><p>所以一定存在三个自然数 $ k_1,k_2,k_3 $ 使得 $ x=k_1p_1+a_1=k_2p_2+a_2=k_3p_3+a_3 $ 。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+k_1p_1+a_1&=k_2p_2+a_2\\
+k_1p_1+a_1&\equiv a_2&\pmod{p_2}\\
+k_1&\equiv\dfrac{a_2-a_1}{p_1}&\pmod{p_2}\\
+\end{aligned}</script><p>这样我们就可以求出 $ k_1\bmod p_2 $ 的值了，不妨记作 $ k_1’ $ 。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+x&=k_1p_1+a_1\\
+x&\equiv k_1'p_1+a_1\pmod{p_2}\\
+x&\equiv k_1'p_1+a_1\pmod{p_1p_2}\\
+\end{aligned}</script><p>令 $ a_4=k_1’p_1+a_1 $ ，则存在 $ k_4 $ 使得 $ x=k_4p_1p_2+a_4 $ 。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+k_4p_1p_2+a_4&=k_3p_3+a_3\\
+k_4p_1p_2+a_4&\equiv a_3&\pmod{p_3}\\
+k_4&\equiv\dfrac{a_3-a_4}{p_1p_2}&\pmod{p_3}
+\end{aligned}</script><p>$ a_4 $ 和 $ k_4 $ 都知道了，我们就可以求出 $ x $ 了。</p>
+<p>当然，你也可以使用 <code>__int128</code>来做。</p>
+<p>中间的取模还是有很多细节的，具体可以看代码。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/80809644">提交记录</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/304d8neq">代码</a></p>
+<p>把三个数字写成一个结构体，一起 NTT 还能更快亿点，真的是亿点。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/80809817">提交记录</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/18m7pda3">代码</a></p>
+<h2 id="分治NTT"><a href="#分治NTT" class="headerlink" title="分治NTT"></a>分治NTT</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4721">P4721 【模板】分治 FFT</a></p>
+<p>虽然写的是FFT，但实际上是分治NTT…</p>
+<p>我们要求出一个满足条件的多项式 $ f $ ，但是 $ f $ 的值和 $ f,g $ 有关。</p>
+<p>考虑进行分治。</p>
+<p>假设我们现在分治到了一个区间 $ [l,r] $ ，下一步肯定是分治 $ [l,mid] $ 这个区间。</p>
+<p>然后呢？我们需要快速处理区间 $ [l,mid] $ 向 $ [mid+1,r] $ 的贡献。</p>
+<p>实际上 NTT 卷一下就可以了。</p>
+<p>时间复杂度 $ T(n)=T\left(\dfrac{n}{2}\right)+O(n\log n)=O(n\log n) $ 。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/80858343">提交记录</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/tyghl292">代码</a></p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=7162">hdu7162</a> 和 <a href="https://shijiuwan.github.io/hdu7162题解/">题解</a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Wuyanru
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="http://shijiuwan.github.io/NTT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="NTT学习笔记">http://shijiuwan.github.io/NTT学习笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" rel="tag"># 多项式</a>
+              <a href="/tags/NTT/" rel="tag"># NTT</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/FFT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="FFT学习笔记">
+      <i class="fa fa-chevron-left"></i> FFT学习笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/FMT-FWT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="FMT/FWT学习笔记">
+      FMT/FWT学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E6%A0%B9"><span class="nav-number">1.</span> <span class="nav-text">原根</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NTT%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">NTT原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7%E8%AF%81%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">正确性证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E9%80%86"><span class="nav-number">4.</span> <span class="nav-text">多项式求逆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E6%84%8F%E6%A8%A1%E6%95%B0%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B9%98%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">任意模数多项式乘法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%B2%BBNTT"><span class="nav-number">6.</span> <span class="nav-text">分治NTT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">例题</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wuyanru"
+      src="/images/Wuyanru.png">
+  <p class="site-author-name" itemprop="name">Wuyanru</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wuyanru</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '162b1f8e183db0079875',
+      clientSecret: '2e51dbf4433b06ff21c5fc15976425b75bd4d71b',
+      repo        : 'shijiuwan.github.io',
+      owner       : 'shijiuwan',
+      admin       : ['shijiuwan'],
+      id          : 'b7957a4c7805aa0b529dc97691aae06e',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

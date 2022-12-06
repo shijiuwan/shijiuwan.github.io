@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/W3.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/W1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shijiuwan.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本题解包含ABC235的所有题目。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Atcoder ABC235题解">
+<meta property="og:url" content="http://shijiuwan.github.io/ABC235%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Wuyanru&amp;#39s blog">
+<meta property="og:description" content="本题解包含ABC235的所有题目。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-05T09:27:51.000Z">
+<meta property="article:modified_time" content="2022-08-05T09:27:51.000Z">
+<meta property="article:author" content="Wuyanru">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shijiuwan.github.io/ABC235%E9%A2%98%E8%A7%A3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Atcoder ABC235题解 | Wuyanru&#39s blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Wuyanru&#39s blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/ABC235%E9%A2%98%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Wuyanru.png">
+      <meta itemprop="name" content="Wuyanru">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuyanru&#39s blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Atcoder ABC235题解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-08-05 17:27:51" itemprop="dateCreated datePublished" datetime="2022-08-05T17:27:51+08:00">2022-08-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本题解包含ABC235的所有题目。</p>
+<span id="more"></span>
+<h2 id="ABC235-A-Rotate"><a href="#ABC235-A-Rotate" class="headerlink" title="ABC235 A - Rotate"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc235/tasks/abc235_a">ABC235 A - Rotate</a></h2><p>给你一个三位数 $ \overline{abc} $，求 $ \overline{abc}+\overline{bca}+\overline{cab} $。</p>
+<hr>
+<p>分析：</p>
+<script type="math/tex; mode=display">
+\overline{abc}+\overline{bca}+\overline{cab}</script><script type="math/tex; mode=display">
+=(100a+10b+c)+(100b+10c+a)+(100c+10a+b)</script><script type="math/tex; mode=display">
+=111a+111b+111c</script><script type="math/tex; mode=display">
+=111(a+b+c)</script><p>那么如何得到 $ a,b,c $ 呢？有这么几种方法：</p>
+<ol>
+<li><p>逐个使用<code>getchar()</code>读入。</p>
+</li>
+<li><p>将它们一起用<code>scanf()</code>读入到一个数组里。</p>
+</li>
+<li><p>将 $ \overline{abc} $ 读入，然后逐位拆开。</p>
+</li>
+</ol>
+<p>最后输出即可。</p>
+<p>时间复杂度 $ O(1) $。</p>
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> a,b,c;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  	a=<span class="built_in">getchar</span>()-<span class="string">&#x27;0&#x27;</span>,b=<span class="built_in">getchar</span>()-<span class="string">&#x27;0&#x27;</span>,c=<span class="built_in">getchar</span>()-<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">  	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="number">111</span>*(a+b+c));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ABC235-B-Climbing-Takahashi"><a href="#ABC235-B-Climbing-Takahashi" class="headerlink" title="ABC235 B - Climbing Takahashi"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc235/tasks/abc235_b">ABC235 B - Climbing Takahashi</a></h2><p>现在有 $ N $ 个平台从左到右排成一行，第 $ i $ 个平台高度为 $ H_i $。有一个人现在站在第一个平台上，他将要重复执行以下动作。</p>
+<p>如果现在他所在的平台不是最右边的平台，且下一个平台比自己所在的这个平台高，那么他将走到下一个平台。</p>
+<p>问他最后停留在的平台的高度。</p>
+<p>$ 2\le N\le10^5 $</p>
+<p>$ 1\le H_i\le10^9 $</p>
+<hr>
+<p>分析：直接模拟这个人走的过程即可。</p>
+<p>当他不走的时候就输出答案就行。</p>
+<p>因为这个人只会从左往右走，所以时间复杂度 $ O(n) $。</p>
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> a[<span class="number">100001</span>];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;a[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">		<span class="keyword">if</span>(a[i]&lt;=a[i<span class="number">-1</span>])&#123; cout&lt;&lt;a[i<span class="number">-1</span>];<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;a[n];</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ABC235-C-The-Kth-Time-Query"><a href="#ABC235-C-The-Kth-Time-Query" class="headerlink" title="ABC235 C - The Kth Time Query"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc235/tasks/abc235_c">ABC235 C - The Kth Time Query</a></h2><p>给定一个长度为 $ N $ 的序列 $ a $。</p>
+<p>现在有 $ Q $ 次询问，第 $ i $ 次询问给定 $ x_i $ 和 $ k_i $，输出 $ x_i $ 这个数字第 $ k_i $ 次在 $ a $ 出现时的下标。没有出现过 $ k_i $ 次输出 $ -1 $。</p>
+<p>$ 1\le N,Q\le 2\times10^5 $</p>
+<p>$ 1\le k_i\le N(1\le i\le Q) $</p>
+<p>$ 0\le x_i\le 10^9(1\le i\le Q) $</p>
+<p>$ 0\le a_i\le 10^9(1\le i\le N) $</p>
+<hr>
+<p>首先对 $ a $ 与 $ x $ 一起进行离散化。</p>
+<p>考虑统计每一个值在哪里出现过。</p>
+<p>不妨对每一个序列中可能的值开一个<code>vector</code>用来统计这个值在哪里出现过。</p>
+<p>然后从左到右对于每一个位置 $ i $，将 $ i $ 加入一个 $ a_i $ 对应的 vector 中。</p>
+<p>因为我们是从左到右加入的，所以每个值对应的<code>vector</code>里元素是从小到大排列的。</p>
+<p>查询直接访问对应的<code>vector</code>进行回答即可。</p>
+<p>时间复杂度 $ O((n+q)\log (n+q)) $ 。</p>
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt;g[<span class="number">400001</span>];</span><br><span class="line"><span class="type">int</span> num[<span class="number">400001</span>];</span><br><span class="line"><span class="type">int</span> a[<span class="number">200001</span>];</span><br><span class="line"><span class="type">int</span> x[<span class="number">200001</span>];</span><br><span class="line"><span class="type">int</span> k[<span class="number">200001</span>];</span><br><span class="line"><span class="type">int</span> n,q;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;q;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) cin&gt;&gt;a[i],num[i]=a[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=q;i++) cin&gt;&gt;x[i]&gt;&gt;k[i],num[i+n]=x[i];</span><br><span class="line">	<span class="built_in">sort</span>(num+<span class="number">1</span>,num+n+q+<span class="number">1</span>);<span class="type">int</span> len=<span class="built_in">unique</span>(num+<span class="number">1</span>,num+n+q+<span class="number">1</span>)-num<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i]=<span class="built_in">lower_bound</span>(num+<span class="number">1</span>,num+len+<span class="number">1</span>,a[i])-num;</span><br><span class="line">		g[a[i]].<span class="built_in">push_back</span>(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=q;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		x[i]=<span class="built_in">lower_bound</span>(num+<span class="number">1</span>,num+len+<span class="number">1</span>,x[i])-num;</span><br><span class="line">		<span class="keyword">if</span>((<span class="type">int</span>)g[x[i]].<span class="built_in">size</span>()&lt;k[i])&#123; cout&lt;&lt;<span class="number">-1</span>&lt;&lt;endl;<span class="keyword">continue</span>;&#125;</span><br><span class="line">		cout&lt;&lt;g[x[i]][k[i]<span class="number">-1</span>]&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ABC235-D-Multiply-and-Rotate"><a href="#ABC235-D-Multiply-and-Rotate" class="headerlink" title="ABC235 D - Multiply and Rotate"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc235/tasks/abc235_d">ABC235 D - Multiply and Rotate</a></h2><p>给定一个数字 $ a $ 与 $ N $，现有一个初始为 $ 1 $ 的数字 $ x $，你可以对 $ x $ 执行以下操作无数次：</p>
+<ol>
+<li><p>令 $ x\gets x\times a $；</p>
+</li>
+<li><p>当 $ x\ge 10 $ 且 $ x\nmid10 $ 时，设 $ y $ 为将 $ x $ 的末位提到最前面所得的数字，令 $ x\gets y $。</p>
+</li>
+</ol>
+<p>求 $ x=N $ 时，操作最小次数。如果无法令 $ x=N $，输出 $ -1 $。</p>
+<p>$ 2\le a,N&lt;10^6 $</p>
+<hr>
+<p>分析：你会发现，假如原来这个数字有 $ x $ 位，那么进行若干次操作以后这个数字的位数一定不会比 $ x $ 小。</p>
+<p>从数字 $ 1 $ 出发，按照两种转移直接进行 bfs 即可。</p>
+<p>时间复杂度 $ O(10^6) $</p>
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="type">bool</span> vis[<span class="number">1000001</span>];</span><br><span class="line"><span class="type">int</span> dis[<span class="number">1000001</span>];</span><br><span class="line"><span class="type">int</span> a,n;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">yi</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>,j=<span class="number">1</span>;;i++,j*=<span class="number">10</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(j&lt;=num&amp;&amp;num&lt;<span class="number">10</span>*j)</span><br><span class="line">			<span class="keyword">return</span> j*(num%<span class="number">10</span>)+num/<span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;a&gt;&gt;n;</span><br><span class="line">	queue&lt;<span class="type">int</span>&gt;que;que.<span class="built_in">push</span>(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span>(!que.<span class="built_in">empty</span>()&amp;&amp;!vis[n])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> p=que.<span class="built_in">front</span>();</span><br><span class="line">		que.<span class="built_in">pop</span>();</span><br><span class="line">		<span class="keyword">if</span>((ll)p*a&lt;=<span class="number">1000000</span>&amp;&amp;!vis[p*a])</span><br><span class="line">		&#123;</span><br><span class="line">			dis[p*a]=dis[p]+<span class="number">1</span>;</span><br><span class="line">			vis[p*a]=<span class="number">1</span>;</span><br><span class="line">			que.<span class="built_in">push</span>(p*a);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(p&gt;<span class="number">10</span>&amp;&amp;p%<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> q=<span class="built_in">yi</span>(p);</span><br><span class="line">			<span class="keyword">if</span>(!vis[q])</span><br><span class="line">			&#123;</span><br><span class="line">				vis[q]=<span class="number">1</span>;</span><br><span class="line">				dis[q]=dis[p]+<span class="number">1</span>;</span><br><span class="line">				que.<span class="built_in">push</span>(q);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(vis[n]) cout&lt;&lt;dis[n];</span><br><span class="line">	<span class="keyword">else</span> cout&lt;&lt;<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ABC235-E-MST-1"><a href="#ABC235-E-MST-1" class="headerlink" title="ABC235 E - MST + 1"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc235/tasks/abc235_e">ABC235 E - MST + 1</a></h2><p>给定一个有 $ N $ 个顶点 $ M $ 条边的无向联通图，以及 $ Q $ 个询问。</p>
+<p>每个询问 $ i $ 给定 $ u_i,v_i,w_i $ 询问，假如有一条连接顶点 $ u_i $ 与 $ v_i $ 且边权为 $ w_i $ 的边，他会不会在新图的最小生成树中。</p>
+<p>$ 1\le N,M,Q\le 2\times 10^5 $</p>
+<p>保证 $ w_i $ 不和原图中任何一条边的边权相等。</p>
+<hr>
+<p>分析：先来想一下最小生成树是怎么得到的。</p>
+<p>首先我们将所有边按照边权从小到大的顺序进行排序。</p>
+<p>然后贪心地加入边。</p>
+<p>如果按照这样做，我们会发现这样做是 $ O(MQ) $ 的，显然无法通过。</p>
+<p>然后你会发现，每一次询问问的是这条边是否会出现在最小生成树中，而不是什么其他的问题。</p>
+<p>那么我们能否快速得到原图中小于某个边权的所有边构成的生成森林的样子呢？</p>
+<p>显然是可以的，我们可以把所有询问离线下来。</p>
+<p>我们对于输入的所有边进行排序，然后每一次不断加上原图中的边。</p>
+<p>然后在这个时候跑一个双指针。</p>
+<p>那么我们就可以知道原图中边权小于某一个值的边所构成生成森林的样子了。</p>
+<p>这个时候直接查一下询问给出的两个点是否连通就可以了。</p>
+<p>最后记得按照询问的顺序顺序输出答案。</p>
+<p>时间复杂度 $ O(M\log M+Q\log Q) $。</p>
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">edge</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> u,v,w;</span><br><span class="line">	<span class="type">bool</span> ans;</span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">&#125;qu[<span class="number">200001</span>],a[<span class="number">200001</span>];</span><br><span class="line"><span class="type">bool</span> qans[<span class="number">200001</span>];</span><br><span class="line"><span class="type">int</span> fa[<span class="number">200001</span>];</span><br><span class="line"><span class="type">int</span> n,m,q;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> num)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(fa[num]==num) <span class="keyword">return</span> num;</span><br><span class="line">	<span class="keyword">return</span> fa[num]=<span class="built_in">find</span>(fa[num]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m&gt;&gt;q;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++) cin&gt;&gt;a[i].u&gt;&gt;a[i].v&gt;&gt;a[i].w;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=q;i++) cin&gt;&gt;qu[i].u&gt;&gt;qu[i].v&gt;&gt;qu[i].w,qu[i].i=i;</span><br><span class="line">	<span class="built_in">sort</span>(a+<span class="number">1</span>,a+m+<span class="number">1</span>,[](edge a,edge b)&#123; <span class="keyword">return</span> a.w&lt;b.w;&#125;);</span><br><span class="line">	<span class="built_in">sort</span>(qu+<span class="number">1</span>,qu+q+<span class="number">1</span>,[](edge a,edge b)&#123; <span class="keyword">return</span> a.w&lt;b.w;&#125;);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) fa[i]=i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;i&lt;=m&amp;&amp;j&lt;=q;)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(a[i].w&lt;qu[j].w)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">find</span>(a[i].u)==<span class="built_in">find</span>(a[i].v))&#123; i++;<span class="keyword">continue</span>;&#125;</span><br><span class="line">			fa[<span class="built_in">find</span>(a[i].u)]=<span class="built_in">find</span>(a[i].v);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">find</span>(qu[j].u)!=<span class="built_in">find</span>(qu[j].v))&#123; qans[qu[j].i]=<span class="number">1</span>;&#125;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=q;i++)</span><br><span class="line">		<span class="keyword">if</span>(qans[i]) cout&lt;&lt;<span class="string">&quot;Yes&quot;</span>&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">else</span> cout&lt;&lt;<span class="string">&quot;No&quot;</span>&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ABC235-F-Variety-of-Digits"><a href="#ABC235-F-Variety-of-Digits" class="headerlink" title="ABC235 F - Variety of Digits"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc235/tasks/abc235_f">ABC235 F - Variety of Digits</a></h2><p>给两个数 $ N $ 与 $ M $，以及长度为 $ M $ 的序列 $ C $，保证 $ C $ 中任何数为一位数。</p>
+<p>求出所有小于等于 $ N $ 且数位中出现过所有 $ C $ 的数字之和。</p>
+<p>$ N\le10^ {10^4} $</p>
+<p>$ 1\le M\le10 $</p>
+<p>$ 0\le C_1&lt;\dots&lt;C_M\le9 $</p>
+<hr>
+<p>分析：很明显的数位状压 dp，没什么好说的。</p>
+<p>细节非常多，具体见代码。</p>
+<p>我用的是二维的 <code>dp[i][j][0\1][0\1]</code>，表示的是当前在第 $ i $ 位，已经出现的数字集合为 $ j $，前面是否全为 $ 0 $，前面是否与 $ n $ 的这些位全部相等的数字之和。</p>
+<p><code>fp[i][j][0/1][0/1]</code>的含义基本一样，只不过记录的是方案数。</p>
+<p>时间复杂度 $ O(\log_{10}n\times2^{10}\times10) $。</p>
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod=<span class="number">998244353</span>;</span><br><span class="line">ll dp[<span class="number">10001</span>][<span class="number">1024</span>][<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line">ll fp[<span class="number">10001</span>][<span class="number">1024</span>][<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line"><span class="type">char</span> a[<span class="number">10002</span>];</span><br><span class="line"><span class="type">int</span> need;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line">ll ans;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;(a+<span class="number">1</span>)&gt;&gt;m;n=<span class="built_in">strlen</span>(a+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> c;</span><br><span class="line">		cin&gt;&gt;c;</span><br><span class="line">		need|=<span class="number">1</span>&lt;&lt;c;</span><br><span class="line">	&#125;</span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	fp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[i+<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">		fp[i+<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">1024</span>;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			dp[i+<span class="number">1</span>][j|<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]=(dp[i+<span class="number">1</span>][j|<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]+dp[i][j][<span class="number">0</span>][<span class="number">0</span>]*<span class="number">10</span>)%mod;</span><br><span class="line">			fp[i+<span class="number">1</span>][j|<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]=(fp[i+<span class="number">1</span>][j|<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]+fp[i][j][<span class="number">0</span>][<span class="number">0</span>])%mod;</span><br><span class="line">			<span class="keyword">if</span>(a[i+<span class="number">1</span>]==<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+<span class="number">1</span>][j|<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>]=(dp[i+<span class="number">1</span>][j|<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>]+dp[i][j][<span class="number">0</span>][<span class="number">1</span>]*<span class="number">10</span>)%mod;</span><br><span class="line">				fp[i+<span class="number">1</span>][j|<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>]=(fp[i+<span class="number">1</span>][j|<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>]+fp[i][j][<span class="number">0</span>][<span class="number">1</span>])%mod;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+<span class="number">1</span>][j|<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]=(dp[i+<span class="number">1</span>][j|<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]+dp[i][j][<span class="number">0</span>][<span class="number">1</span>]*<span class="number">10</span>)%mod;</span><br><span class="line">				fp[i+<span class="number">1</span>][j|<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]=(fp[i+<span class="number">1</span>][j|<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]+fp[i][j][<span class="number">0</span>][<span class="number">1</span>])%mod;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;<span class="number">10</span>;k++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="type">int</span> jj=j|(<span class="number">1</span>&lt;&lt;k);</span><br><span class="line">				dp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]=(dp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]+dp[i][j][<span class="number">0</span>][<span class="number">0</span>]*<span class="number">10</span>+fp[i][j][<span class="number">0</span>][<span class="number">0</span>]*k)%mod;</span><br><span class="line">				fp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]=(fp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]+fp[i][j][<span class="number">0</span>][<span class="number">0</span>])%mod;</span><br><span class="line">				<span class="keyword">if</span>(k&lt;a[i+<span class="number">1</span>]-<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					dp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]=(dp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]+dp[i][j][<span class="number">0</span>][<span class="number">1</span>]*<span class="number">10</span>+fp[i][j][<span class="number">0</span>][<span class="number">1</span>]*k)%mod;</span><br><span class="line">					fp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]=(fp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]+fp[i][j][<span class="number">0</span>][<span class="number">1</span>])%mod;</span><br><span class="line">					<span class="keyword">if</span>(i==<span class="number">0</span>)</span><br><span class="line">					&#123;</span><br><span class="line">						dp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]=(dp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]+fp[i][j][<span class="number">1</span>][<span class="number">0</span>]*k)%mod;</span><br><span class="line">						fp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]=(fp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]+fp[i][j][<span class="number">1</span>][<span class="number">0</span>])%mod;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(k==a[i+<span class="number">1</span>]-<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					dp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">1</span>]=(dp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">1</span>]+dp[i][j][<span class="number">0</span>][<span class="number">1</span>]*<span class="number">10</span>+fp[i][j][<span class="number">0</span>][<span class="number">1</span>]*k)%mod;</span><br><span class="line">					fp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">1</span>]=(fp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">1</span>]+fp[i][j][<span class="number">0</span>][<span class="number">1</span>])%mod;</span><br><span class="line">					<span class="keyword">if</span>(i==<span class="number">0</span>)</span><br><span class="line">					&#123;</span><br><span class="line">						dp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">1</span>]=(dp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">1</span>]+fp[i][j][<span class="number">1</span>][<span class="number">0</span>]*k)%mod;</span><br><span class="line">						fp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">1</span>]=(fp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">1</span>]+fp[i][j][<span class="number">1</span>][<span class="number">0</span>])%mod;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(i!=<span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					dp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]=(dp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]+fp[i][j][<span class="number">1</span>][<span class="number">0</span>]*k)%mod;</span><br><span class="line">					fp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]=(fp[i+<span class="number">1</span>][jj][<span class="number">0</span>][<span class="number">0</span>]+fp[i][j][<span class="number">1</span>][<span class="number">0</span>])%mod;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">1024</span>;i++) <span class="keyword">if</span>((need&amp;i)==need)</span><br><span class="line">		ans=(ans+dp[n][i][<span class="number">0</span>][<span class="number">0</span>]+dp[n][i][<span class="number">0</span>][<span class="number">1</span>]+dp[n][i][<span class="number">1</span>][<span class="number">0</span>]+dp[n][i][<span class="number">1</span>][<span class="number">1</span>])%mod;</span><br><span class="line">	cout&lt;&lt;ans;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ABC235-G-Gardens"><a href="#ABC235-G-Gardens" class="headerlink" title="ABC235 G - Gardens"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc235/tasks/abc235_g">ABC235 G - Gardens</a></h2><p>你现在有 $ N $ 个花园，以及 $ A $ 个苹果苗，$ B $ 个香蕉苗，$ C $ 个樱桃苗。你现在要将这些树苗种到花园中。</p>
+<p>求出使得每个花园非空且任何一个花园不能种植两个同类树苗的方案。</p>
+<p>$ 1\le N\le5\times 10^6 $</p>
+<p>$ 0\le A,B,C\le N $</p>
+<hr>
+<p>分析：</p>
+<p>首先判断一下特殊情况，如果 $ A+B+C&lt;N $ 答案为 $ 0 $。</p>
+<p>下来我们来看，假如说我们不要求每个花园非空，该怎么做？</p>
+<p>我们来考虑每种树苗的放置情况。</p>
+<p>苹果苗可以不放，方案数为 $ C^0_n $；可以放一个，方案数为 $ C^1_n $…；可以放 $ A $ 个，方案数为 $ C^A_n $。</p>
+<p>香蕉苗，樱桃苗也是一样的。</p>
+<p>所以总方案数为 $ \left(\sum\limits_{i=0}^ AC^ i_n\right)\times\left(\sum\limits_{i=0}^B  C^ i_n\right)\times\left(\sum\limits_{i=0}^ CC^i_n\right) $。</p>
+<p>如果说要使得他非空，再加上一个容斥就可以了。</p>
+<p>因为非空的方案=所有方案-空了一个的方案+空了两个的方案……</p>
+<p>可以证明是对的。</p>
+<p>开开心心打完代码，发现 TLE 了。时间复杂度炸成 $ O(n^2) $。</p>
+<p>考虑加速容斥的过程。想一想哪里复杂度最大？没错，求组合数的和的过程。</p>
+<p>我们要对与每一个 $ i\le n $ 求出 $ \sum\limits_{j=0}^{\min(i,a)} $$ C_i^j $</p>
+<p>显然，当 $ i\le a $ 时，上面的值为 $ 2^i $。</p>
+<p>考虑 $ i&gt;a $ 时的情况。</p>
+<script type="math/tex; mode=display">
+\sum\limits_{j=0}^{\min(i,a)}C_i^j</script><script type="math/tex; mode=display">
+=\sum\limits_{j=0}^aC_i^j</script><p>利用杨辉三角可以知道上面的值为 $ =\left(\sum\limits_{j=0}^ aC_{i-1}^ j\right)\times2-C_{i-1}^a $。</p>
+<p>直接 $ O(1) $ 递推就行。</p>
+<p>时间复杂度 $ O(n) $ 或 $ O(n\log mod) $</p>
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod=<span class="number">998244353</span>;</span><br><span class="line">ll jc[<span class="number">5000001</span>];</span><br><span class="line">ll inv[<span class="number">5000001</span>];</span><br><span class="line">ll p[<span class="number">5000001</span>];</span><br><span class="line">ll numa,numb,numc;</span><br><span class="line"><span class="type">int</span> a,b,c;</span><br><span class="line"><span class="type">int</span> sum;</span><br><span class="line">ll ans;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="function">ll <span class="title">qow</span><span class="params">(ll a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans=ans*a%mod;</span><br><span class="line">		a=a*a%mod;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">C</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>&#123; <span class="keyword">return</span> jc[b]*inv[a]%mod*inv[b-a]%mod;&#125;</span><br><span class="line"><span class="function">ll <span class="title">run</span><span class="params">(ll numa,<span class="type">int</span> a,<span class="type">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a&gt;=i) <span class="keyword">return</span> p[i];</span><br><span class="line">	numa=numa*<span class="number">2</span>-<span class="built_in">C</span>(a,i<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">return</span> (numa%mod+mod)%mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;a&gt;&gt;b&gt;&gt;c;sum=a+b+c;</span><br><span class="line">	<span class="keyword">if</span>(sum&lt;n)&#123; cout&lt;&lt;<span class="number">0</span>;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line">	inv[<span class="number">0</span>]=jc[<span class="number">0</span>]=p[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		jc[i]=jc[i<span class="number">-1</span>]*i%mod;</span><br><span class="line">		inv[i]=inv[i<span class="number">-1</span>]*<span class="built_in">qow</span>(i,mod<span class="number">-2</span>)%mod;</span><br><span class="line">		p[i]=(p[i<span class="number">-1</span>]*<span class="number">2</span>)%mod;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		numa=<span class="built_in">run</span>(numa,a,i),numb=<span class="built_in">run</span>(numb,b,i),numc=<span class="built_in">run</span>(numc,c,i);</span><br><span class="line">		ll num=numa*numb%mod*numc%mod;</span><br><span class="line">		num=num*<span class="built_in">C</span>(i,n)%mod;</span><br><span class="line">		<span class="keyword">if</span>((n-i)%<span class="number">2</span>) ans=(ans-num+mod)%mod;</span><br><span class="line">		<span class="keyword">else</span> ans=(ans+num)%mod;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;ans;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ABC235-Ex-Painting-Weighted-Graph"><a href="#ABC235-Ex-Painting-Weighted-Graph" class="headerlink" title="ABC235 Ex - Painting Weighted Graph"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc235/tasks/abc235_h">ABC235 Ex - Painting Weighted Graph</a></h2><p>给定 $ N $ 个点与 $ M $ 条边的无向图，第 $ i $ 条边连接顶点 $ A_i $ 与 $ B_i $，边权为 $ C_i $。</p>
+<p>你现在可以执行以下操作。</p>
+<p>每次你可以任意指定一个节点 $ v $ 与整数 $ x $，将所有从节点 $ v $ 出发只经过边权不超过 $ x $ 的边就能到达的节点全部染成红色。</p>
+<p>求经过不超过 $ K $ 次操作后节点变红的集合数量。</p>
+<p>$ 2\le N\le 10^5 $</p>
+<p>$ 0\le M\le 10^5 $</p>
+<p>$ 1\le K \le 500 $</p>
+<p>$ 1\le C_i \le 10^9 $</p>
+<hr>
+<p>分析：</p>
+<p>看到边权不超过 $ x $ 的边，你想到了什么？</p>
+<p>没错！Kruskal 重构树！</p>
+<p>我们把这个图的 Kruskal 重构树求出来。</p>
+<p>然后你就会发现在原图中选择两个整数实际相当于在重构树上选择一个子树。</p>
+<p>所以我们只需要一个树形 dp 就可以。</p>
+<p>$ dp_{i,j} $ 表示在子树 $ i $ 中共染色了 $ j $ 次，可以得到多少种不同的结果。</p>
+<p>看起来简单，实际上转移的时候非常复杂，很有可能算重/算漏。</p>
+<p>而且因为有边权相等的情况，所以这里的 Kruskal 重构树与平时的还有些不同。</p>
+<p>这里两个边如果边权一样的话，是不能成为父子关系的，具体细节可以见代码。</p>
+<p>时间复杂度 $ O(NK) $。</p>
+<p>你可能会说：什么？这样做时间复杂度不是 $ O(NK^2) $ 吗？</p>
+<p>是的，看起来确实是 $ O(NK^2) $ 的，但实际上，他真的是 $ O(NK) $。</p>
+<p>时间复杂度证明：两个子树的合并可以分为三种情况，所以分类讨论</p>
+<ol>
+<li><p>两个大小都大于等于 $ K $ 的子树合并；<br>可以发现，大小大于等于 $ K $ 的子树最多只有 $ \dfrac{N}{K} $ 个，也就是说最多会合并 $ \dfrac{N}{K} $ 次。<br>这部分时间复杂度 $ O(\dfrac{N}{K}\times K^2)=O(NK) $。</p>
+</li>
+<li><p>两个大小都小于 $ K $ 的子树合并；<br>如果两个子树大小之和小于 $ K $，我们不考虑这种情况，归类到下面。<br>如果两个子树大小之和大于等于 $ K $，设子树大小分别为 $ a,b $。<br>时间复杂度 $ T(K)=T(a)+T(b)+a\times b $。<br>在 $ a=b $ 时时间复杂度最大，此时：  </p>
+<script type="math/tex; mode=display">
+T(K)=2T(\dfrac{K}{2})+K^2=O(K^2)</script><p>此时合并出一个大小大于等于 $ K $ 的子树时间复杂度为 $ O(K^2) $，且这个复杂度包含了第一类情况。<br>这种最多合并 $ \dfrac{N}{K} $ 次，时间复杂度 $ O(\dfrac{N}{K}\times K^2)=O(NK) $。</p>
+</li>
+<li><p>一个大小大于等于 $ K $ 和一个大小小于 $ K $ 的子树合并；<br>一个大小为 $ a(a\ge K) $ 的子树与一个 $ b(b&lt;K) $ 的子树合并起来时间复杂度为 $ O(Kb) $。<br>对于所有这种情况，都有 $ \sum b\le N $。<br>所以这部分时间复杂度为 $ O(NK) $。</p>
+</li>
+</ol>
+<p>结合上面所有情况，时间复杂度为 $ O(NK) $。</p>
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">edge</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> u,v,w;</span><br><span class="line">&#125;a[<span class="number">100001</span>];</span><br><span class="line">basic_string&lt;<span class="type">int</span>&gt;g[<span class="number">200001</span>],num;</span><br><span class="line">ll dp[<span class="number">200001</span>][<span class="number">501</span>];</span><br><span class="line"><span class="type">int</span> siz[<span class="number">200001</span>];</span><br><span class="line"><span class="type">int</span> val[<span class="number">200001</span>];</span><br><span class="line"><span class="type">int</span> fa[<span class="number">200001</span>];</span><br><span class="line">ll h[<span class="number">200001</span>];</span><br><span class="line"><span class="type">int</span> n,m,k;</span><br><span class="line"><span class="type">int</span> tot;</span><br><span class="line"><span class="type">int</span> sum;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(fa[num]==num) <span class="keyword">return</span> num;</span><br><span class="line">	<span class="keyword">return</span> fa[num]=<span class="built_in">find</span>(fa[num]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(num&lt;=n)&#123; siz[num]=<span class="number">1</span>;<span class="keyword">return</span> ;&#125;</span><br><span class="line">	dp[num][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> p:g[num])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">dfs</span>(p);</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> x=<span class="number">0</span>;x&lt;=siz[num]&amp;&amp;x&lt;=k;x++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> y=<span class="number">0</span>;x+y&lt;=k&amp;&amp;y&lt;=siz[p];y++)</span><br><span class="line">				h[x+y]=(h[x+y]+dp[num][x]*dp[p][y])%mod;</span><br><span class="line">		siz[num]+=siz[p];</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> x=<span class="number">0</span>;x&lt;=siz[num]&amp;&amp;x&lt;=k;x++) dp[num][x]=h[x],h[x]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(num!=tot||sum==n<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[num][<span class="number">1</span>]=(dp[num][<span class="number">1</span>]+<span class="number">1</span>)%mod;</span><br><span class="line">		<span class="type">int</span> s=(<span class="type">int</span>)g[num].<span class="built_in">size</span>();</span><br><span class="line">		<span class="keyword">if</span>(s&lt;=k) dp[num][s]=(dp[num][s]<span class="number">-1</span>+mod)%mod;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++) cin&gt;&gt;a[i].u&gt;&gt;a[i].v&gt;&gt;a[i].w;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) fa[i]=i,dp[i][<span class="number">0</span>]=dp[i][<span class="number">1</span>]=<span class="number">1</span>,g[i]+=i;</span><br><span class="line">	<span class="built_in">sort</span>(a+<span class="number">1</span>,a+m+<span class="number">1</span>,[](edge a,edge b)&#123; <span class="keyword">return</span> a.w&lt;b.w;&#125;);tot=n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;i&lt;=m;i=j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> save=tot;</span><br><span class="line">		<span class="keyword">for</span>(;j&lt;=m&amp;&amp;a[i].w==a[j].w;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> u=<span class="built_in">find</span>(a[j].u),v=<span class="built_in">find</span>(a[j].v);</span><br><span class="line">			<span class="keyword">if</span>(u==v) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(u&gt;v) <span class="built_in">swap</span>(u,v);sum++;</span><br><span class="line">			<span class="keyword">if</span>(v&lt;=save)</span><br><span class="line">			&#123;</span><br><span class="line">				tot++;val[tot]=a[j].w;</span><br><span class="line">				fa[u]=fa[v]=fa[tot]=tot;</span><br><span class="line">				g[tot]+=u,g[tot]+=v;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(u&lt;=save) g[v]+=u;</span><br><span class="line">				<span class="keyword">else</span>&#123; <span class="keyword">for</span>(<span class="type">int</span> i:g[u]) g[v]+=i;g[u].<span class="built_in">clear</span>();&#125;</span><br><span class="line">				fa[u]=v;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=tot;i++) <span class="keyword">if</span>(<span class="built_in">find</span>(i)==i) num+=i;</span><br><span class="line">	<span class="keyword">if</span>((<span class="type">int</span>)num.<span class="built_in">size</span>()&gt;=<span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tot++;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i:num) fa[i]=tot,g[tot]+=i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">dfs</span>(tot);</span><br><span class="line">	ll ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=k;i++) ans=(ans+dp[tot][i])%mod;</span><br><span class="line">	cout&lt;&lt;ans;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>完结撒花！</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Wuyanru
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="http://shijiuwan.github.io/ABC235%E9%A2%98%E8%A7%A3/" title="Atcoder ABC235题解">http://shijiuwan.github.io/ABC235题解/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/NOI2021%E5%AF%86%E7%A0%81%E7%AE%B1/" rel="prev" title="[NOI2021] 密码箱">
+      <i class="fa fa-chevron-left"></i> [NOI2021] 密码箱
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ABC228%E9%A2%98%E8%A7%A3/" rel="next" title="Atcoder ABC228题解">
+      Atcoder ABC228题解 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ABC235-A-Rotate"><span class="nav-number">1.</span> <span class="nav-text">ABC235 A - Rotate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ABC235-B-Climbing-Takahashi"><span class="nav-number">2.</span> <span class="nav-text">ABC235 B - Climbing Takahashi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ABC235-C-The-Kth-Time-Query"><span class="nav-number">3.</span> <span class="nav-text">ABC235 C - The Kth Time Query</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ABC235-D-Multiply-and-Rotate"><span class="nav-number">4.</span> <span class="nav-text">ABC235 D - Multiply and Rotate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ABC235-E-MST-1"><span class="nav-number">5.</span> <span class="nav-text">ABC235 E - MST + 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ABC235-F-Variety-of-Digits"><span class="nav-number">6.</span> <span class="nav-text">ABC235 F - Variety of Digits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ABC235-G-Gardens"><span class="nav-number">7.</span> <span class="nav-text">ABC235 G - Gardens</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ABC235-Ex-Painting-Weighted-Graph"><span class="nav-number">8.</span> <span class="nav-text">ABC235 Ex - Painting Weighted Graph</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wuyanru"
+      src="/images/Wuyanru.png">
+  <p class="site-author-name" itemprop="name">Wuyanru</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wuyanru</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '162b1f8e183db0079875',
+      clientSecret: '2e51dbf4433b06ff21c5fc15976425b75bd4d71b',
+      repo        : 'shijiuwan.github.io',
+      owner       : 'shijiuwan',
+      admin       : ['shijiuwan'],
+      id          : '083be0732b176d117c91750439c0ef96',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

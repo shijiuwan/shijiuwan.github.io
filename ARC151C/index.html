@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/W3.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/W1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shijiuwan.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="这场做完B就去写作业了… 题目当时瞅了一眼，感觉不算特别难。 题目链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Atcoder ARC151C题解">
+<meta property="og:url" content="http://shijiuwan.github.io/ARC151C/index.html">
+<meta property="og:site_name" content="Wuyanru&amp;#39s blog">
+<meta property="og:description" content="这场做完B就去写作业了… 题目当时瞅了一眼，感觉不算特别难。 题目链接">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/18/xrZXRS.png">
+<meta property="article:published_time" content="2022-10-18T02:16:13.000Z">
+<meta property="article:modified_time" content="2022-10-18T02:16:13.000Z">
+<meta property="article:author" content="Wuyanru">
+<meta property="article:tag" content="博弈论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/18/xrZXRS.png">
+
+<link rel="canonical" href="http://shijiuwan.github.io/ARC151C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Atcoder ARC151C题解 | Wuyanru&#39s blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Wuyanru&#39s blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/ARC151C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Wuyanru.png">
+      <meta itemprop="name" content="Wuyanru">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuyanru&#39s blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Atcoder ARC151C题解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-10-18 10:16:13" itemprop="dateCreated datePublished" datetime="2022-10-18T10:16:13+08:00">2022-10-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这场做完B就去写作业了…</p>
+<p>题目当时瞅了一眼，感觉不算特别难。</p>
+<p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/arc151/tasks/arc151_c">题目链接</a></p>
+<span id="more"></span>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>现在有 $ N $ 个格子，编号为 $ 1\sim N $ 。对于每一个 $ 1\leqslant i&lt;N $ ，格子 $ i $ 与格子 $ i+1 $ 是相邻的。</p>
+<p>最初，有 $ M $ 个方格上写有数字，第 $ X_i $ 个方格上写的数字是 $ Y_i $ ，每一个格子上面的数字只能是 $ 0 $ 或 $ 1 $ 。剩下的 $ N-M $ 个方格上没有数字。</p>
+<p>现在，高桥和青木将轮流执行一下操作，高桥先执行。</p>
+<p>选择一个上面没有数字的方格，在上面写下 $ 0 $ 或 $ 1 $ ，需要保证这个方格与它相邻的方格，上面的数字不同。</p>
+<p>如果一个人不能操作，游戏结束，那个不能操作的人就输了。</p>
+<p>如果两个人都按最优方案进行操作，谁会赢？</p>
+<p>$ 1\leqslant N\leqslant 10^{18} $</p>
+<p>$ 1\leqslant M\leqslant \min\{2\times 10^5,N\} $</p>
+<p>$ 1\leqslant X_1&lt;X_2&lt;\dots&lt;X_M\leqslant N $</p>
+<p>$ Y_i\in\{0,1\} $</p>
+<p>$ X_i+1=X_{i+1}\Longrightarrow Y_i\ne Y_{i+1} -$</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先我们知道，这题是个博弈论（废话</p>
+<p>我们会发现，假如有两段空白的区域，中间用若干个数字隔开，那么这两段在操作的时候是不会互相影响的。</p>
+<p>并且两个人可执行的操作是完全相同的。</p>
+<p>所以我们知道，这道题是一个公平博弈，而且使用SG函数大概率可以做出来。</p>
+<p>不过这道题的SG函数比较复杂，因为需要多种情况进行讨论。</p>
+<p>我们设 $ sg_{i,0} $ 为一段长度为 $ i $ 的两端数字相等的空白区域的SG函数值。</p>
+<p>设 $ sg_{i,1} $ 为一段长度为 $ i $ 的两端数字不等的空白区域的SG函数值。</p>
+<p>设 $ sg_{i,2} $ 为一段长度为 $ i $ 的一端为格子边界（1或 $ N $ ）的空白区域的SG函数值。</p>
+<p>设 $ sg_{i,3} $ 为一段长度为 $ i $ 的两端都为格子边界的空白区域的SG函数值。</p>
+<p>看起来很不好求，所以我们进行打表。</p>
+<p>打出来的结果放在这里：</p>
+<p><img src="https://s1.ax1x.com/2022/10/18/xrZXRS.png" alt=""></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/z64fe7ir">打表程序</a></p>
+<p>会发现SG函数的特征还是比较明显的。</p>
+<p>做到这里其实就可以直接使用SG函数解决了，时间复杂度是 $ O(M) $ 的。</p>
+<p>不过这个结论终究是打表看出来的，下面来证明一下：</p>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>我们现在需要证明的是对于任何正整数 $ i $ ，都有 $ sg_{i,0}=1,sg_{i,1}=0,sg_{i,2}=i,sg_{i,3}=i\And 1 $ 。</p>
+<p>是用数学归纳法。</p>
+<p>首先对于 $ i=1 $ ，结论显然成立。</p>
+<p>现在假设，对于一个 $ k\geqslant 2 $ ，所有 $ 1\leqslant i&lt;k $ 都满足结论，现在证明对于 $ i=k $ ，也满足结论。</p>
+<h4 id="sg-i-0"><a href="#sg-i-0" class="headerlink" title="$ sg_{i,0} $"></a>$ sg_{i,0} $</h4><p>显然，一共有两种情况：</p>
+<ol>
+<li>分成两段长度 $ &gt;0 $ 的两端相同的空白段，此时可达到的 $ sg $ 值为 $ 0 $ 。</li>
+<li>分成两段长度 $ \geqslant 0 $ 的两端不同的空白段，此时可达到的 $ sg $ 值为 $ 0 $ 。</li>
+</ol>
+<p>所以 $ sg_{i,0}=\operatorname{mex}\{0\}=1 $ 。</p>
+<h4 id="sg-i-1"><a href="#sg-i-1" class="headerlink" title="$ sg_{i,1} $"></a>$ sg_{i,1} $</h4><p>显然，一共有一种情况。</p>
+<p>分成一段长度 $ &gt;0 $ 的两端相同的空白段和一段长度 $ \geqslant 0 $ 的两端不同的空白段。</p>
+<p>可以达到的 $ sg $ 值为 $ 1 $ 。</p>
+<p>所以 $ sg_{i,1}=\operatorname{mex}\{1\}=0 $ 。</p>
+<h4 id="sg-i-2"><a href="#sg-i-2" class="headerlink" title="$ sg_{i,2} $"></a>$ sg_{i,2} $</h4><p>显然，一共有两种情况。</p>
+<ol>
+<li><p>分成一段长度 $ &gt;0 $ 的两端相同的空白段和一段长度 $ \geqslant 0 $ 的一端为边界的空白段，设含边界的一段长度为 $ j(0\leqslant j\leqslant i-2) $ 。</p>
+<p>则此时可以到达的 $ sg $ 值为 $ j\wedge 1 $ ，并且可以知道： $0\leqslant j\wedge 1\leqslant i-1 $ 。</p>
+</li>
+<li><p>分成一段长度 $ \geqslant 0 $ 的两端不同的空白段和一段长度 $ \geqslant 0 $ 的一端为边界的空白段，设含边界的一段长度为 $ j(0\leqslant j\leqslant i-1) $ 。</p>
+<p>则此时可以到达的 $ sg $ 为 $ j $ ，并且可以知道，可以到达的所有 $ sg $ 恰好为 $ [0,i-1] $ 的所有整数。</p>
+</li>
+</ol>
+<p>所以 $ sg_{i,2}=\operatorname{mex}\{j|0\leqslant j&lt;i,j\in\mathbb{N}\}=i $ 。</p>
+<h4 id="sg-i-3"><a href="#sg-i-3" class="headerlink" title="$ sg_{i,3} $"></a>$ sg_{i,3} $</h4><p>显然，一共有一种情况。</p>
+<p>分成两端长度 $ \geqslant 0 $ 的一端为边界的空白段，假设其中一段的长度为 $ j $ ，则另一段的长度为 $ i-j-1 $ 。</p>
+<ol>
+<li><p>当 $ i $ 为偶数时，$ j $ 与 $ i-j-1 $ 恰好有一个是偶数，一个是奇数。</p>
+<p>此时 $ sg_{i,3}=\operatorname{mex}S(0\not\in S)=0 $</p>
+</li>
+<li><p>当 $ i $ 为奇数时，$ j $ 与 $ i-j-1 $ 奇偶性相同。</p>
+<p>取 $ j=\dfrac{i-1}{2} $ 时，$ j=i-j-1 $ ，到达的 $ sg $ 值为 $ 0 $ 。</p>
+<p>因为他们两个奇偶性相同，所以到达的 $ sg $ 值不可能为奇数。</p>
+<p>此时 $ sg_{i,3}=\operatorname{mex}S(0\in S\wedge 1\not\in S)=1 $ 。</p>
+</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DABC ABCD ABCA DBAA</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="keyword">using</span> pli=pair&lt;ll,<span class="type">int</span>&gt;;</span><br><span class="line"><span class="keyword">using</span> pi=pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> A&gt;</span><br><span class="line"><span class="keyword">using</span> vc=vector&lt;A&gt;;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> s=<span class="number">0</span>,w=<span class="number">1</span>;<span class="type">char</span> ch;</span><br><span class="line">	<span class="keyword">while</span>((ch=<span class="built_in">getchar</span>())&gt;<span class="string">&#x27;9&#x27;</span>||ch&lt;<span class="string">&#x27;0&#x27;</span>) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) w=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>) s=s*<span class="number">10</span>+ch-<span class="string">&#x27;0&#x27;</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">return</span> s*w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">lread</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll s=<span class="number">0</span>,w=<span class="number">1</span>;<span class="type">char</span> ch;</span><br><span class="line">	<span class="keyword">while</span>((ch=<span class="built_in">getchar</span>())&gt;<span class="string">&#x27;9&#x27;</span>||ch&lt;<span class="string">&#x27;0&#x27;</span>) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) w=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>) s=s*<span class="number">10</span>+ch-<span class="string">&#x27;0&#x27;</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">return</span> s*w;</span><br><span class="line">&#125;</span><br><span class="line">ll ans;</span><br><span class="line"><span class="type">int</span> m;</span><br><span class="line">ll n;</span><br><span class="line"><span class="function">ll <span class="title">get</span><span class="params">(<span class="type">int</span> lst,<span class="type">int</span> now,ll len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(len==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(lst==<span class="number">-1</span>||now==<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(lst==<span class="number">-1</span>&amp;&amp;now==<span class="number">-1</span>) <span class="keyword">return</span> len&amp;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(len==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> len;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> lst==now;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=<span class="built_in">lread</span>(),m=<span class="built_in">read</span>();</span><br><span class="line">	ll lst=<span class="number">0</span>;<span class="type">int</span> type=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ll now=<span class="built_in">lread</span>();<span class="type">int</span> ty=<span class="built_in">read</span>();</span><br><span class="line">		ans^=<span class="built_in">get</span>(type,ty,now-lst<span class="number">-1</span>);</span><br><span class="line">		lst=now,type=ty;</span><br><span class="line">	&#125;</span><br><span class="line">	ans^=<span class="built_in">get</span>(type,<span class="number">-1</span>,n-lst);</span><br><span class="line">	<span class="keyword">if</span>(ans) <span class="built_in">printf</span>(<span class="string">&quot;Takahashi\n&quot;</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;Aoki\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>感谢观看！</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Wuyanru
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="http://shijiuwan.github.io/ARC151C/" title="Atcoder ARC151C题解">http://shijiuwan.github.io/ARC151C/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" rel="tag"># 博弈论</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ARC149D/" rel="prev" title="Atcoder ARC149D题解">
+      <i class="fa fa-chevron-left"></i> Atcoder ARC149D题解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Lucas%E5%AE%9A%E7%90%86/" rel="next" title="Lucas定理">
+      Lucas定理 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%81%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text">证明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sg-i-0"><span class="nav-number">2.1.1.</span> <span class="nav-text">$ sg_{i,0} $</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sg-i-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">$ sg_{i,1} $</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sg-i-2"><span class="nav-number">2.1.3.</span> <span class="nav-text">$ sg_{i,2} $</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sg-i-3"><span class="nav-number">2.1.4.</span> <span class="nav-text">$ sg_{i,3} $</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wuyanru"
+      src="/images/Wuyanru.png">
+  <p class="site-author-name" itemprop="name">Wuyanru</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wuyanru</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '162b1f8e183db0079875',
+      clientSecret: '2e51dbf4433b06ff21c5fc15976425b75bd4d71b',
+      repo        : 'shijiuwan.github.io',
+      owner       : 'shijiuwan',
+      admin       : ['shijiuwan'],
+      id          : 'ed7aceec7b9e4417a1bf6104c1dd325b',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

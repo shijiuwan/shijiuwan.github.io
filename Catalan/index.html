@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/W3.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/W1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shijiuwan.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="问题引入使用 $ n $ 个相同的节点可构造多少种不同的二叉树？其中 $ 1\le n\le5000 $。 设 $ f_i $ 表示用 $ i $ 个节点构造的的二叉树形态的个数，不难发现 $ f_0&#x3D;1 $,为空树。 由于非空的二叉树是由根节点、左子树、右子树组成的，考虑对左子树节点数量进行枚举，所以有：  f_n&#x3D;\sum\limits_{i&#x3D;0}^{n-1}f_i\times f_{n-1-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Catalan">
+<meta property="og:url" content="http://shijiuwan.github.io/Catalan/index.html">
+<meta property="og:site_name" content="Wuyanru&amp;#39s blog">
+<meta property="og:description" content="问题引入使用 $ n $ 个相同的节点可构造多少种不同的二叉树？其中 $ 1\le n\le5000 $。 设 $ f_i $ 表示用 $ i $ 个节点构造的的二叉树形态的个数，不难发现 $ f_0&#x3D;1 $,为空树。 由于非空的二叉树是由根节点、左子树、右子树组成的，考虑对左子树节点数量进行枚举，所以有：  f_n&#x3D;\sum\limits_{i&#x3D;0}^{n-1}f_i\times f_{n-1-">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/13/HDfr36.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/13/HD4CWt.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/05/27/XZjh4J.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/05/27/XZjfN4.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/05/27/XZjWEF.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/05/27/XZj5C9.md.png">
+<meta property="article:published_time" content="2022-08-05T06:51:38.000Z">
+<meta property="article:modified_time" content="2022-08-05T06:51:38.000Z">
+<meta property="article:author" content="Wuyanru">
+<meta property="article:tag" content="组合数学">
+<meta property="article:tag" content="Catalan">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s4.ax1x.com/2022/02/13/HDfr36.png">
+
+<link rel="canonical" href="http://shijiuwan.github.io/Catalan/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Catalan | Wuyanru&#39s blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Wuyanru&#39s blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/Catalan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Wuyanru.png">
+      <meta itemprop="name" content="Wuyanru">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuyanru&#39s blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Catalan
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-08-05 14:51:38" itemprop="dateCreated datePublished" datetime="2022-08-05T14:51:38+08:00">2022-08-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">算法学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h3><p>使用 $ n $ 个相同的节点可构造多少种不同的二叉树？其中 $ 1\le n\le5000 $。</p>
+<p>设 $ f_i $ 表示用 $ i $ 个节点构造的的二叉树形态的个数，不难发现 $ f_0=1 $,为空树。</p>
+<p>由于非空的二叉树是由根节点、左子树、右子树组成的，考虑对左子树节点数量进行枚举，所以有：</p>
+<script type="math/tex; mode=display">
+f_n=\sum\limits_{i=0}^{n-1}f_i\times f_{n-1-i}</script><p>这里 $ f $ 序列就是 $ Catalan $ 序列。</p>
+<span id="more"></span>
+<h3 id="基本模型"><a href="#基本模型" class="headerlink" title="基本模型"></a>基本模型</h3><h4 id="模型-1："><a href="#模型-1：" class="headerlink" title="模型 1："></a>模型 1：</h4><p>给定 $ n $ 个相同的节点，求可以组成的二叉树形态总数。</p>
+<p>一开始就已经说过了，证明略。</p>
+<h4 id="模型-2："><a href="#模型-2：" class="headerlink" title="模型 2："></a>模型 2：</h4><p>长度为 $ 2n $ 的合法括号序列的形态个数。</p>
+<p><strong>证明：</strong></p>
+<p>记长度为 $ 2i $ 的合法括号序列形态个数为 $ h_i $。</p>
+<p>首先当 $ n $ 为 $ 0 $ 或 $ 1 $ 时，都只有一种形态，即 $ h_0=h_1=1 $。</p>
+<p>考虑 $ n\ge2$ 的情况，由于这是一个合法的括号序列，所以最后一个括号必定为右括号。</p>
+<p>我们再将最后一个右括号所对应的左括号表示出来，括号序列就可以表示为如下形式：A(B)。</p>
+<p>其中 A 与 B 必为合法的括号序列（可能为空），枚举 A 的长度，所以有：</p>
+<script type="math/tex; mode=display">
+h_n=\sum\limits_{i=0}^{n-1}h_i\times h_{n-i-1}</script><p>所以这是卡特兰数。</p>
+<h4 id="模型-3："><a href="#模型-3：" class="headerlink" title="模型 3："></a>模型 3：</h4><p>长度为 $ n $ 的序列的出栈序列种数：</p>
+<p><strong>证明：</strong></p>
+<p>不难发现，对于两种不同的进出栈操作，他们的出栈序列肯定是不同的，所以出栈序列种数其实就是求合法操作数。</p>
+<p>那什么样的操作是合法的呢？</p>
+<p>我们将一次进栈操作看为一个左括号，一次出栈操作看为一个右括号。</p>
+<p>那么，当进栈次数与出栈次数相同，且任何时候当前进栈次数大于等于出栈次数时，</p>
+<p>这个出栈序列是合法的，且括号序列也是合法的。</p>
+<p>反之也成立。</p>
+<p>所以其实这和模型2是一样的。</p>
+<h4 id="模型-4："><a href="#模型-4：" class="headerlink" title="模型 4："></a>模型 4：</h4><p>给定 $ -1 $ 与 $ 1 $ 各 $ n $ 个，让他们组成一个长度为 $ 2n $ 的序列 $ a $，问这样的 $ a $ 的个数：对于每一个 $ i\in\left[1,2n\right] $ 都有 $ \sum\limits^{i}_{j=1}a_j\ge0 $。</p>
+<p><strong>证明：</strong></p>
+<p>只需要让任何时候 $ 1 $ 的数量大于等于 $ -1 $ 的数量即可。</p>
+<p>将 $ 1 $ 看作左括号， $ -1 $ 看作右括号，其实就是求合法的括号序列数，与模型2一模一样。</p>
+<h4 id="模型-5："><a href="#模型-5：" class="headerlink" title="模型 5："></a>模型 5：</h4><p>给定 $ -1 $ 与 $ 1 $ 各 $ n $ 个，让他们组成一个长度为 $ 2n $ 的序列 $ a $，问这样的 $ a $ 的个数：存在一个 $ i\in\left[1,2n\right]$ 使得 $ \sum\limits_{j=1}^{i}a_j&gt;0 $。</p>
+<p><strong>证明：</strong></p>
+<p>$ Catalan_n $ 是对于任何 $ i\in\left[1,2n\right]$，都有 $ \sum\limits_{j=1}^{i}a_j\le0 $ 的序列个数（大于等于和小于等于是一样的）。</p>
+<p>很容易发现这就是不合法的序列的个数。</p>
+<p>所以答案为 $ C^n_{2n}-Catalan_n $。</p>
+<h4 id="模型-6："><a href="#模型-6：" class="headerlink" title="模型 6："></a>模型 6：</h4><p>一个圆上有 $ 2n $ 个点，求连 $ n $ 条线段使得任两线段之间没有交点的方案数（端点处相交也算有交点）。</p>
+<h4 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h4><p>将这 $ 2n $ 个点按顺序进行标号（顺时针或逆时针都行），枚举 $ 1 $ 号点与几号点连线，之后这个圆就被分为了两个圆弧。</p>
+<p>设答案为 $ f_{2n} $，则 $ f_{2n}=\sum\limits_{i\in[2,2n]\textbf{且}i|2}f_{i-2}\times f_{2n-i} $。</p>
+<p>解释：$ i $ 为与 $ 1 $ 连线的节点，要求 $ i|2 $ 是为了分成的两端圆弧所含的点的个数都为偶数，$ i-2 $ 和 $ 2n-i $ 是分成的两段圆弧的点的个数。</p>
+<p>设 $ g_n=f_{2n} $，并使用 $ 2j $ 替换上式中的 $ i $，有：</p>
+<p>$ g_n=\sum\limits_{2j\in[2,2n]}f_{2j-2}\times f_{2n-2j}=\sum\limits_{j=1}^ng_{j-1}\times g_{n-j}=\sum\limits_{j=0}^{n-1}g_j\times g_{n-j+1} $</p>
+<p>$ g $ 序列即为 $ Catalan $ 序列</p>
+<h3 id="问题扩展"><a href="#问题扩展" class="headerlink" title="问题扩展"></a>问题扩展</h3><p>使用 $ n $ 个相同的节点可构造多少种不同的二叉树？其中 $ 1\le n\le10^5 $。</p>
+<p>显然，如果利用上述公式进行计算，时间复杂度为 $ O\left(n^2\right) $,无法接受。</p>
+<h4 id="定理一："><a href="#定理一：" class="headerlink" title="定理一："></a>定理一：</h4><script type="math/tex; mode=display">
+Catalan_n=C_{2n}^n-C_{2n}^{n+1}</script><p>证明：</p>
+<p>使用模型 $ 4 $,考虑求出合法方案数。</p>
+<p>首先我们知道 $ 1 $ 与 $ -1 $ 各有 $ n $ 个，我们先将这 $ n $ 个 $ 1 $ 插入 $ 2n $ 个空中，总方案数（可能不合法）即为 $ C_{2n}^n $。</p>
+<p>如果一个序列是不合法的，那么说明至少存在一个 $ i\in[1,2n] $，使得 $ \sum\limits_{j=1}^{2n}a_j&lt;0 $。</p>
+<p>那么我们设这样的 $ i $ 中最小的一个为 $ k $。</p>
+<p>假如对于下面这个序列，满足条件的 $ i $ 为 $ 5,9 $，那么 $ k=5 $。</p>
+<p>显然会有 $ \sum\limits_{i=1}^ka_i=a_k=-1 $ </p>
+<p>$ 1,1,-1,-1,-1,1,1,-1,-1,1 $</p>
+<p>我们把他的图画出来。</p>
+<p><img src="https://s4.ax1x.com/2022/02/13/HDfr36.png" alt="HDfr36.png"></p>
+<p>然后我们将前 $ k $ 个数翻转（将 $ 1 $ 变成 $ -1 $，将 $ -1 $ 变成 $ 1 $）。</p>
+<p>显然，会得到的一个有 $ n+1 $ 个 $ 1 $ 和 $ n-1 $ 个 $ -1 $ 的序列。</p>
+<p>上面的序列翻转后得到的序列是 $ -1,-1,1,1,1,1,1,-1,-1,1 $。</p>
+<p><img src="https://s4.ax1x.com/2022/02/13/HD4CWt.png" alt="HD4CWt.png"></p>
+<p>假设翻转后的序列为 $ b $。</p>
+<p>显然会有 $ \sum\limits_{i=1}^kb_i=b_k=1 $</p>
+<p>显然，对于每一个序列 $ a $，都有一个<strong>唯一的</strong>序列 $ b $ 与之对应。原因：$ k $ 是唯一的。</p>
+<p>显然，对于每一个序列 $ b $，都有一个<strong>唯一的</strong>序列 $ a $ 与之对应。原因：$ k $ 是唯一的。</p>
+<p>也就是说，$ a $ 序列与 $ b $ 序列是两两对应的，所以他们的数量是相等的。</p>
+<p>又因为 $ b $ 序列是由 $ n+1 $ 个 $ 1 $ 与 $ n-1 $ 个 $ -1 $ 组成的，</p>
+<p>所以他们的数量都为 $ C_{2n}^{n+1} $。</p>
+<p>合法序列数量即为 $ C^ n_{2n}-C^{n+1}_{2n} $。</p>
+<script type="math/tex; mode=display">
+\therefore Catalan_n=C_{2n}^n-C_{2n}^{n+1}</script><h4 id="定理二："><a href="#定理二：" class="headerlink" title="定理二："></a>定理二：</h4><script type="math/tex; mode=display">
+Catalan_n=\dfrac{C_{2n}^n}{n+1}</script><p>证明：</p>
+<p>考虑使用定理一进行推导：</p>
+<script type="math/tex; mode=display">
+Catalan_n=C_{2n}^n-C_{2n}^{n+1}</script><script type="math/tex; mode=display">
+=\dfrac{\left(2n\right)!}{n!\times n!}-\dfrac{\left(2n\right)!}{\left(n+1\right)!\times\left(n-1\right)!}</script><script type="math/tex; mode=display">
+=\dfrac{1}{n+1}\times\left(\dfrac{\left(2n\right)!\times\left(n+1\right)}{n!\times n!}-\dfrac{\left(2n\right)!\times\left(n+1\right)}{\left(n+1\right)!\times\left(n-1\right)!}\right)</script><script type="math/tex; mode=display">
+=\dfrac{1}{n+1}\times\left(\dfrac{\left(2n\right)!\times\left(n+1\right)}{n!\times n!}-\dfrac{\left(2n\right)!}{n!\times\left(n-1\right)!}\right)</script><script type="math/tex; mode=display">
+=\dfrac{1}{n+1}\times\left(\dfrac{\left(2n\right)!\times\left(n+1\right)}{n!\times n!}-\dfrac{\left(2n\right)!\times n}{n!\times n!}\right)</script><script type="math/tex; mode=display">
+=\dfrac{1}{n+1}\times\left(\dfrac{\left(2n\right)!\times\left(n+1\right)}{n!\times n!}-\dfrac{\left(2n\right)!\times n}{n!\times n!}\right)</script><script type="math/tex; mode=display">
+=\dfrac{1}{n+1}\times\dfrac{\left(2n\right)!}{n!\times n!}</script><script type="math/tex; mode=display">
+=\dfrac{1}{n+1}\times C_{2n}^n</script><script type="math/tex; mode=display">
+\therefore Catalan_n=\dfrac{C_{2n}^n}{n+1}</script><p>他的另一种形式是：</p>
+<script type="math/tex; mode=display">
+\therefore Catalan_n=\dfrac{\left(2n\right)!}{n!\times n! \times\left(n+1\right)}</script><script type="math/tex; mode=display">
+=\dfrac{\left(2n\right)!}{\left(n+1\right)!\times n!}</script><script type="math/tex; mode=display">
+=\dfrac{\prod\limits_{i=n+2}^{2n}i}{\prod\limits_{i=1}^ni}</script><h4 id="定理三："><a href="#定理三：" class="headerlink" title="定理三："></a>定理三：</h4><script type="math/tex; mode=display">
+Catalan_n=\dfrac{4n-2}{n+1}\times Catalan_{n-1}</script><p>证明：</p>
+<p>考虑使用定理二：</p>
+<script type="math/tex; mode=display">
+Catalan_n=\dfrac{C_{2n}^n}{n+1}</script><script type="math/tex; mode=display">
+=\dfrac{1}{n+1}\times\dfrac{\left(2n\right)!}{n!\times n!}</script><script type="math/tex; mode=display">
+=\dfrac{1}{n+1}\times\dfrac{\left(2n-2\right)!\times \left(2n-1\right)\times\left(2n\right)}{\left(n-1\right)!\times\left(n-1\right)!\times n^2}</script><script type="math/tex; mode=display">
+=\dfrac{1}{n+1}\times\dfrac{\left(2n-1\right)\times\left(2n\right)}{n}\times\dfrac{1}{n}\times\dfrac{\left(2n-2\right)!}{\left(n-1\right)!\times\left(n-1\right)!}</script><script type="math/tex; mode=display">
+=\dfrac{1}{n+1}\times\dfrac{2\left(2n-1\right)}{n}\times C_{2n-2}^{n-1}</script><script type="math/tex; mode=display">
+=\dfrac{4n-2}{n+1}\times\dfrac{C_{2n-2}^{n-1}}{n}</script><script type="math/tex; mode=display">
+\therefore Catalan_n=\dfrac{4n-2}{n+1}\times Catalan_{n-1}</script><p>注：上述证明参考自：</p>
+<p><a target="_blank" rel="noopener" href="https://www.136.la/shida/show-228451.html">Catalan通项公式的推导</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/suijie/p/3989352.html">n对括号的匹配方式以及Catalan数通项公式的推导</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zyt1253679098/p/9190217.html">【知识总结】卡特兰数 (Catalan Number) 公式的推导</a></p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><h4 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h4><p><a target="_blank" rel="noopener" href="https://luogu.com.cn/problem/P1044">洛谷P1044栈</a></p>
+<p>与模型三一样，证明略。</p>
+<h4 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2532">洛谷P2532树屋阶梯</a></p>
+<p>我们不妨将每一行最后一个格子成为特殊格。</p>
+<p>不难发现，每摆放一份钢材，最多只有一个特殊格被覆盖，所以每一次摆放钢材时必须要覆盖到一个特殊格。</p>
+<p>显然，最左下角的格子也会被覆盖一次（没错，这是一句废话），那么我们就可以枚举一下和左下角格子一起被覆盖的是哪一个特殊格。</p>
+<p>给出 $ n=4 $ 时第一次放钢材的方案，供大家理解：</p>
+<p><img src="https://s1.ax1x.com/2022/05/27/XZjh4J.md.png" alt="XZjh4J.md.png"></p>
+<p><img src="https://s1.ax1x.com/2022/05/27/XZjfN4.md.png" alt="XZjfN4.md.png"></p>
+<p><img src="https://s1.ax1x.com/2022/05/27/XZjWEF.md.png" alt="XZjWEF.md.png"></p>
+<p><img src="https://s1.ax1x.com/2022/05/27/XZj5C9.md.png" alt="XZj5C9.md.png"></p>
+<p>摆放钢材后这个楼梯形状的物品便被分为了两个楼梯，故这是一个 Catalan 数列。</p>
+<p>注意：本题没有模，所以需要使用高精。</p>
+<h4 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1641">洛谷P1641生成字符串</a></p>
+<p>与模型 $ 4 $ 一样，证明略。</p>
+<h4 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3200">洛谷P3200有趣的数列</a></p>
+<p>首先我们对题意进行转化，不妨将整个序列拆成两个，一个由原下标为奇数的组成，另一个由原下标为偶数的组成。</p>
+<p>显然，这两个序列都是递增的。</p>
+<p>那么，题意就可以转化为：对于 $ 1 $ 至 $ 2n $ 中的每个正整数，要么将其放到奇数序列的当前最后一个的后面，要么将其放到偶数序列当前最后一个的后面。</p>
+<p>现在我们还有一个条件：就是奇数序列对应数字比偶数序列对应数字小。</p>
+<p>这该怎么办呢？其实我们再将这个条件进行转化：</p>
+<p>在任意时候，偶数序列数字个数都比奇数序列数字个数多。</p>
+<p>所以，当序列长度为 $ 2n $ 时，答案即为 $ Catalan_n $。</p>
+<p>本题还有一个难点，就是没有保证模数是质数。实际上，我们只要求出 $ 2\sim 2n $ 中，每个正整数的质因数及个数，再利用公式：</p>
+<script type="math/tex; mode=display">
+Catalan_n=\dfrac{\prod\limits_{i=n+2}^{2n}i}{\prod\limits_{i=1}^ni}</script><p>即可计算答案。</p>
+<p>注：此题转化题意部分主要受<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/zwq/solution-p3200">题解 P3200[HNOI2009]有趣的数列</a>启发。</p>
+<p>目前还没有找到别的啥要讲，就先咕咕咕。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Wuyanru
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="http://shijiuwan.github.io/Catalan/" title="Catalan">http://shijiuwan.github.io/Catalan/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="tag"># 组合数学</a>
+              <a href="/tags/Catalan/" rel="tag"># Catalan</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="多项式学习笔记">
+      多项式学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%BC%95%E5%85%A5"><span class="nav-number">1.</span> <span class="nav-text">问题引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">基本模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B-1%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">模型 1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B-2%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">模型 2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B-3%EF%BC%9A"><span class="nav-number">2.3.</span> <span class="nav-text">模型 3：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B-4%EF%BC%9A"><span class="nav-number">2.4.</span> <span class="nav-text">模型 4：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B-5%EF%BC%9A"><span class="nav-number">2.5.</span> <span class="nav-text">模型 5：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B-6%EF%BC%9A"><span class="nav-number">2.6.</span> <span class="nav-text">模型 6：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%81%E6%98%8E"><span class="nav-number">2.7.</span> <span class="nav-text">证明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%89%A9%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">问题扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%86%E4%B8%80%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">定理一：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%86%E4%BA%8C%EF%BC%9A"><span class="nav-number">3.2.</span> <span class="nav-text">定理二：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%86%E4%B8%89%EF%BC%9A"><span class="nav-number">3.3.</span> <span class="nav-text">定理三：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B1"><span class="nav-number">4.1.</span> <span class="nav-text">例1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B2"><span class="nav-number">4.2.</span> <span class="nav-text">例2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B3"><span class="nav-number">4.3.</span> <span class="nav-text">例3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B4"><span class="nav-number">4.4.</span> <span class="nav-text">例4</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wuyanru"
+      src="/images/Wuyanru.png">
+  <p class="site-author-name" itemprop="name">Wuyanru</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wuyanru</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '162b1f8e183db0079875',
+      clientSecret: '2e51dbf4433b06ff21c5fc15976425b75bd4d71b',
+      repo        : 'shijiuwan.github.io',
+      owner       : 'shijiuwan',
+      admin       : ['shijiuwan'],
+      id          : '6ce8a929b7f389a9b5fa0e8465cdfc0e',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
