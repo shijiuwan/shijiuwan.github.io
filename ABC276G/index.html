@@ -228,7 +228,7 @@
 <li>$ b_i\geqslant 0(1\leqslant i\leqslant N+1) $</li>
 <li>$ \sum\limits_{i=1}^{N+1}b_i=M $</li>
 </ol>
-<p>不拿发现，如果没有第一个条件，那么方案数很好算，就是 $ \dbinom{M+N}{N} $ ，可以使用插板法推出来。</p>
+<p>不难发现，如果没有第一个条件，那么方案数很好算，就是 $ \dbinom{M+N}{N} $ ，可以使用插板法推出来。</p>
 <p>这个时候我们可以想到，将每一个 $ b_i $ 使用别的方法“表示”出来。</p>
 <p>现在，我们对 $ b_i $ 做带余除法，可以将 $ b_i $ 表达为 $ c_i+d_i(c_i=\left\lfloor\dfrac{b_i}{3}\times 3\right\rfloor,d_i=b_i-c_i) $ 。</p>
 <p>特别地，对于 $ i=N+1 $ ，我们令 $ c_i=b_i,d_i=0 $ 。</p>
@@ -239,7 +239,7 @@
 <li>$ \sum\limits_{i=1}^{N+1}(c_i+d_i)=M $</li>
 </ol>
 <p>然后，我们枚举 $ v=\sum\limits_{i=1}^{N+1}d_i $ ，考虑如何计算方案数。</p>
-<p>首先对于 $ d_{N+1} $ ，他们肯定都是 $ 0 $ ，不考虑。</p>
+<p>首先 $ d_{N+1} $ 肯定是 $ 0 $ ，不考虑。</p>
 <p>不难发现，当 $ i\ne 1 $ 时，因为有 $ b_i\nmid 3\Longleftrightarrow(c_i+d_i)\nmid 3 $ ，而 $ c_i $ 又是 $ 3 $ 的倍数，所以 $ d_i\nmid 3\Longleftrightarrow d_i=1,2 $。</p>
 <p>然后使用插板法，当 $ d_1\ne 0 $ 时，方案数是 $ \dbinom{N}{v-N} $ 。</p>
 <p>当 $ d_1=0 $ 时，方案数是 $ \dbinom{N-1}{v-N+1} $ 。</p>
