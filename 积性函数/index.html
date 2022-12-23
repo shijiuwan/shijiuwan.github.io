@@ -215,8 +215,7 @@
 f(a)f(b)=f(ab)</script><p>那么我们称 $ f $ 为积性函数。</p>
 <p>特别的，如果对于任何两个正整数 $ a,b $ 都有 $ f(a)f(b)=f(ab) $ ，那么称 $ f $ 为完全积性函数。</p>
 <h2 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积"></a>狄利克雷卷积</h2><p>下文中，我们统一使用 $ \ast $ 来表示乘法卷积，也叫做狄利克雷卷积。</p>
-<p>看到这个符号不要害怕，我一开始就是因为看到新符号害怕，没有学杜教筛。</p>
-<p>但是看完之后发现就是一个新运算，把它当成小学奥数题就OK。</p>
+<p>其实就是一个新运算，<del>把它当成小学奥数题就OK</del>。</p>
 <p>具体来说，如果有 $ f=g\ast h $ ，那么就会有：</p>
 <script type="math/tex; mode=display">
 f(n)=\sum_{i\times j=n}g(i)\times h(j)=\sum_{i|n}g(i)\times h\left(\dfrac{n}{i}\right)</script><p>这里，$ f(i) $ 表示一个多项式的第 $ i $ 项（$ i $ 次项的系数），或者一个函数在 $ i $ 处的取值。</p>
@@ -332,11 +331,11 @@ g(ab)&=g(a)g(b)\\
 =&(f\ast(g\ast h))(n)
 \end{aligned}</script><h2 id="常见积性函数"><a href="#常见积性函数" class="headerlink" title="常见积性函数"></a>常见积性函数</h2><p>$ \varepsilon(n)=[n=1] $ 原函数，$ n $ 为 $1  $ 时值为 $ 1 $ ，否则为 $ 0 $ 。<strong>是完全积性函数</strong>。</p>
 <p>$ \varphi(n)=\sum\limits_{i=1}^n[\gcd(i,n)=1] $ 表示小于等于 $ n $ 的数中和 $ n $ 互质的数字个数。</p>
-<p>$ \mu(n)=\begin{cases}<br>1&amp;n=1\\<br>(-1)^k&amp;n=p_1p_2\dots p_k\\<br>0&amp;\text{otherwise}<br>\end{cases}$ 就是莫比乌斯函数。</p>
-<p>$ I(n)=1 $ 值永远为 $ 1 $ 。<strong>是完全积性函数</strong>。</p>
-<p>$ id(n)=n $就是值本身。<strong>是完全积性函数</strong>。</p>
-<p>$ d(n)=\sum\limits_{d|n}1 $约数个数。</p>
-<p>$ \sigma(n)=\sum\limits_{d|n}d $约数和。</p>
+<p>$ \mu(n)=\begin{cases}<br>1&amp;n=1\\<br>(-1)^k&amp;n=p_1p_2\dots p_k\\<br>0&amp;\text{otherwise}<br>\end{cases}$ ，就是莫比乌斯函数。</p>
+<p>$ I(n)=1 $，值永远为 $ 1 $ 。<strong>是完全积性函数</strong>。</p>
+<p>$ id(n)=n $，就是值本身。<strong>是完全积性函数</strong>。</p>
+<p>$ d(n)=\sum\limits_{d|n}1 $，约数个数。</p>
+<p>$ \sigma(n)=\sum\limits_{d|n}d $，约数和。</p>
 <h2 id="常见公式"><a href="#常见公式" class="headerlink" title="常见公式"></a>常见公式</h2><h3 id="公式-1"><a href="#公式-1" class="headerlink" title="公式 $ 1 $"></a>公式 $ 1 $</h3><p>$ \mu\ast I=\varepsilon $</p>
 <p>证明：</p>
 <p>对于任何质数 $ p $ 和正整数 $ c $ ，都有：</p>
@@ -515,7 +514,7 @@ g(ab)&=g(a)g(b)\\
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -528,7 +527,7 @@ g(ab)&=g(a)g(b)\\
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
