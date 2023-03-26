@@ -269,22 +269,21 @@ UFMT(f)=
 \begin{cases}
 f&|f|=1\\
 (UFMT(f_0)-UFMT(f_1),UFMT(f_1))&|f|\ne 1
-\end{cases}</script><h4 id="逆变换递归公式证明"><a href="#逆变换递归公式证明" class="headerlink" title="逆变换递归公式证明"></a>逆变换递归公式证明</h4><p>还是数学归纳法。</p>
-<p>当 $ |f|=2^0 $ 时，显然。</p>
-<p>否则，我们假设 $ |f|=2^n $ ，那么公式对于 $ f_0 $ 和 $ f_1 $ 成立。</p>
-<p>和正变换一样，只需要计算跨越中点的答案。</p>
-<p>我们现在想要知道 $ f_0 $ 需要从 $ f_1 $ 中减去多少。</p>
-<p>显然，对于一个下标 $ i&lt;2^{n-1} $ ，它在右边需要减去的值就是 $ f_{i+2^{n-1}} $ 。</p>
-<p>也就是说 $ UFMT(f)_0=UFMT(f_0-f_1) $ 。</p>
-<p>接下来我们只需要证明对于两个多项式 $ A,B $ ，有 $ UFMT(A)+UFMT(B)=UFMT(A+B) $ 。</p>
-<p>根据定义，有：</p>
+\end{cases}</script><h4 id="逆变换递归公式证明"><a href="#逆变换递归公式证明" class="headerlink" title="逆变换递归公式证明"></a>逆变换递归公式证明</h4><p>首先我们根据数学归纳法证明 $ UFMT(A)+UFMT(B)=UFMT(A+B) $ 与 $ FMT(A)+FMT(B)=FMT(A+B) $。</p>
+<p>$ |f|=1 $ 时显然，否则根据 $ UFMT $ 定义展开即可。</p>
+<p>再进行数学归纳法证明 $ UFMT(FMT(f))=f $ ：</p>
+<p>当 $ |f|=1 $ 时，显然。</p>
+<p>根据定义展开：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-UFMT(A)[i]&=\sum\limits_{i\in j}A[j]\times(-1)^{\operatorname{popcount}(i\wedge j)}\\
-UFMT(B)[i]&=\sum\limits_{i\in j}B[j]\times(-1)^{\operatorname{popcount}(i\wedge j)}\\
-UFMT(A+B)[i]&=\sum\limits_{i\in j}(A+B)[j]\times(-1)^{\operatorname{popcount}(i\wedge j)}\\
-\end{aligned}</script><p>所以上面的公式都成立。</p>
-<p>与变换就是这样的。</p>
+&UFMT(FMT(f))\\
+=&UFMT(FMT(f_0)+FMT(f_1),FMT(f_1))\\
+=&UFMT(FMT(f_0+f_1),FMT(f_1))\\
+=&(UFMT(FMT(f_0+f_1))-UFMT(FMT(f_1)),UFMT(FMT(f_1)))\\
+=&(f_0+f_1-f_1,f_1)\\
+=&(f_0,f_1)\\
+=&f
+\end{aligned}</script><p>所以 $ UFMT(FMT(f))=f $</p>
 <h2 id="或运算"><a href="#或运算" class="headerlink" title="或运算"></a>或运算</h2><p>其实这里和与运算差不多，会的小伙伴可以忽略。</p>
 <p>我们还是定义一个关于多项式的函数 $ FMT(f) $ ：</p>
 <script type="math/tex; mode=display">
@@ -331,25 +330,25 @@ UFMT(f)=
 \begin{cases}
 f&|f|=1\\
 (UFMT(f_0),UFMT(f_1)-UFMT(f_0))&|f|\ne 1
-\end{cases}</script><h4 id="逆变换递归公式证明-1"><a href="#逆变换递归公式证明-1" class="headerlink" title="逆变换递归公式证明"></a>逆变换递归公式证明</h4><p>还是数学归纳法。</p>
-<p>当 $ |f|=2^0 $ 时，显然。</p>
-<p>否则，我们假设 $ |f|=2^n $ ，那么公式对于 $ f_0 $ 和 $ f_1 $ 成立。</p>
-<p>和正变换一样，只需要计算跨越中点的答案。</p>
-<p>我们现在想要知道 $ f_1 $ 需要从 $ f_0 $ 中减去多少。</p>
-<p>显然，对于一个下标 $ i&lt;2^{n-1} $ ，$ f_{i+2^{n-1}} $ 在右边需要减去的值就是 $ f_{i} $ 。</p>
-<p>也就是说 $ UFMT(f)_1=UFMT(f_1-f_0) $ 。</p>
-<p>接下来我们只需要证明对于两个多项式 $ A,B $ ，有 $ UFMT(A)+UFMT(B)=UFMT(A+B) $ 。</p>
-<p>根据定义，有：</p>
+\end{cases}</script><h4 id="逆变换递归公式证明-1"><a href="#逆变换递归公式证明-1" class="headerlink" title="逆变换递归公式证明"></a>逆变换递归公式证明</h4><p>首先我们根据数学归纳法证明 $ UFMT(A)+UFMT(B)=UFMT(A+B) $ 与 $ FMT(A)+FMT(B)=FMT(A+B) $。</p>
+<p>$ |f|=1 $ 时显然，否则根据 $ UFMT $ 定义展开即可。</p>
+<p>再进行数学归纳法证明 $ UFMT(FMT(f))=f $ ：</p>
+<p>当 $ |f|=1 $ 时，显然。</p>
+<p>根据定义展开：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-UFMT(A)[i]&=\sum\limits_{j\in i}A[j]\times(-1)^{\operatorname{popcount}(i\wedge j)}\\
-UFMT(B)[i]&=\sum\limits_{j\in i}B[j]\times(-1)^{\operatorname{popcount}(i\wedge j)}\\
-UFMT(A+B)[i]&=\sum\limits_{j\in i}(A+B)[j]\times(-1)^{\operatorname{popcount}(i\wedge j)}\\
-\end{aligned}</script><p>所以上面的公式都成立。</p>
+&UFMT(FMT(f))\\
+=&UFMT(FMT(f_0),FMT(f_0)+FMT(f_1))\\
+=&UFMT(FMT(f_0),FMT(f_0+f_1))\\
+=&(UFMT(FMT(f_0)),UFMT(FMT(f_0+f_1))-UFMT(FMT(f_0)))\\
+=&(f_0,f_0+f_1-f_0)\\
+=&(f_0,f_1)\\
+=&f
+\end{aligned}</script><p>所以 $ UFMT(FMT(f))=f $</p>
 <h2 id="异或运算"><a href="#异或运算" class="headerlink" title="异或运算"></a>异或运算</h2><p>这里就不是FMT了，就是FWT了。</p>
 <p>我们还是定义一个关于多项式的函数 $ FWT(f) $ ：</p>
 <script type="math/tex; mode=display">
-FWT(f)[i]=\sum_{j=0}^{|f|-1}f_j\times(-1)^{\operatorname{popcound(i\And j)}}</script><p>小朋友，你是否有很多问号。</p>
+FWT(f)[i]=\sum_{j=0}^{|f|-1}f_j\times(-1)^{\operatorname{popcount(i\And j)}}</script><p>小朋友，你是否有很多问号。</p>
 <p>我们的目标还是算出 $ FWT(f),FWT(g) $ ，然后算出 $ FWT(h) $ ，然后算出 $ h $ 。</p>
 <p>显然我们就可以在 $ O(|f|^2) $ 的时间内求出 $ FWT(f) $ 。</p>
 <h3 id="正变换-2"><a href="#正变换-2" class="headerlink" title="正变换"></a>正变换</h3><p>这个复杂度我都看不下去了。</p>
@@ -383,46 +382,31 @@ f&|f|=1\\
 <p>考虑所有 $ i $ 和 $ j $ 上都是 $ 1 $ 的位，因为 $ j $ 的这一位上是 $1 $ ，所以 $ p $ 和 $ q $ 肯定有且只有一个这一位上是 $ 1 $ 。</p>
 <p>如果某一位 $ i $ 上是 $ 1 $ ，$ j $ 上是 $ 0 $ ，那么 $ p $ 和 $ q $ 肯定要么全是 $ 1 $ ，要么全是 $ 0 $ ，奇偶性不变。</p>
 <p>如果某一位 $ i $ 上是 $ 0 $ ，那么这三个 $ \operatorname{popcount} $ 的值肯定全是 $ 0 $ 。</p>
-<p>综上所述， $ i $ 和 $ j $ 无论怎么去，这两个式子的奇偶性都一样。</p>
+<p>综上所述， $ i $ 和 $ j $ 无论怎么取，这两个式子的奇偶性都一样。</p>
 <p>所以说，我们就可直接将 $ FWT(f),FWT(g) $  乘起来，得到 $ FWT(h) $ 。</p>
 <h3 id="逆变换-2"><a href="#逆变换-2" class="headerlink" title="逆变换"></a>逆变换</h3><p>现在我们知道了 $ FWT(h) $ 的值，想要求出 $ h $ 。</p>
-<p>我们定义 $ FWT $ 的逆变换 $ UFWT $ ，使得 $ UFWT(FWT(h))=h $ 。</p>
-<p>这次还是有一个递归公式：</p>
+<p>定义递归公式 $ UFWT(f) $：</p>
 <script type="math/tex; mode=display">
 UFWT(f)=
 \begin{cases}
 f&|f|=1\\
 (\dfrac{UFWT(f_0)+UFWT(f_1)}{2},\dfrac{UFWT(f_0)-UFWT(f_1)}{2})&|f|\ne 1
-\end{cases}</script><h4 id="逆变换递归公式证明-2"><a href="#逆变换递归公式证明-2" class="headerlink" title="逆变换递归公式证明"></a>逆变换递归公式证明</h4><p>还是数学归纳法。</p>
-<p>当 $ |f|=2^0 $ 时，显然。</p>
-<p>否则，我们假设 $ |f|=2^n $ ，那么公式对于 $ f_0 $ 和 $ f_1 $ 成立。</p>
-<p>这次换一个证明方法吧，感觉与运算和或运算复杂了。</p>
-<p>首先我们知道 $ FWT(UFWT(f))=f $ 。</p>
-<p>然后将公式代入：</p>
-<p>$ (FWT(UFWT(f)_0)+FWT(UFWT(f)_1),FWT(UFWT(f)_0)-FWT(UFWT(f)_1))=f $  。</p>
-<p>所以就一定会有：</p>
-<script type="math/tex; mode=display">
-\begin{cases}
-FWT(UFWT(f)_0)+FWT(UFWT(f)_1)=f_0\\
-FWT(UFWT(f)_0)-FWT(UFWT(f)_1)=f_1
-\end{cases}</script><p>通过解方程可以得：</p>
+\end{cases}</script><p>现在我们想要证明 $ UFWT(FWT(f))=f $</p>
+<h4 id="逆变换递归公式证明-2"><a href="#逆变换递归公式证明-2" class="headerlink" title="逆变换递归公式证明"></a>逆变换递归公式证明</h4><p>首先我们根据数学归纳法证明 $ UFWT(A)+UFWT(B)=UFWT(A+B) $ 与 $ FWT(A)+FWT(B)=FWT(A+B) $。</p>
+<p>$ |f|=1 $ 时显然，否则根据 $ UFWT $ 定义展开即可。</p>
+<p>再进行数学归纳法证明 $ UFWT(FWT(f))=f $ ：</p>
+<p>当 $ |f|=1 $ 时，显然。</p>
+<p>根据定义展开：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-FWT(UFWT(f)_0)=\dfrac{f_0+f_1}{2}\\
-FWT(UFWT(f)_1)=\dfrac{f_0-f_1}{2}
-\end{aligned}</script><p>对于等号两边，同时做 $ UFWT $ 。</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-UFWT(f)_0=UFWT\left(\dfrac{f_0+f_1}{2}\right)\\
-UFWT(f)_1=UFWT\left(\dfrac{f_0-f_1}{2}\right)
-\end{aligned}</script><p>把右边的 $ 2 $ 移到函数外显然没有影响。</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-UFWT(f)_0=\dfrac{UFWT(f_0+f_1)}{2}\\
-UFWT(f)_1=\dfrac{UFWT(f_0-f_1)}{2}
-\end{aligned}</script><p>和之前一样，需要证明 $ UFWT(A)+UFWT(B)=UFWT(A+B) $ 。</p>
-<p>首先我们通过定义，易得 $ FWT(A)+FWT(B)=FWT(A+B) $ 。</p>
-<p>因为 $ FWT $ 和 $ UFWT $ 互逆，显然成立。<del>其实是我不会证</del></p>
+&UFWT(FWT(f))\\
+=&UFWT(FWT(f_0)+FWT(f_1),FWT(f_0)-FWT(f_1))\\
+=&UFWT(FWT(f_0+f_1),FWT(f_0-f_1))\\
+=&(\dfrac{UFWT(FWT(f_0+f_1))+UFWT(FWT(f_0-f_1))}{2},\dfrac{UFWT(FWT(f_0+f_1))-UFWT(FWT(f_0-f_1))}{2})\\
+=&(\dfrac{f_0+f_1+f_0-f_1}{2},\dfrac{f_0+f_1-f_0+f_1}{2})\\
+=&(f_0,f_1)\\
+=&f
+\end{aligned}</script><p>所以 $ UFWT(FWT(f))=f $</p>
 <p>代码放上：</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/76728624">提交记录</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/e0toyfyi">代码</a></p>
@@ -544,7 +528,7 @@ UFWT(f)_1=\dfrac{UFWT(f_0-f_1)}{2}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -557,7 +541,7 @@ UFWT(f)_1=\dfrac{UFWT(f_0-f_1)}{2}
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
