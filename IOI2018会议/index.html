@@ -30,6 +30,7 @@
 <meta property="article:published_time" content="2022-08-05T11:59:50.000Z">
 <meta property="article:modified_time" content="2022-08-05T11:59:50.000Z">
 <meta property="article:author" content="Wuyanru">
+<meta property="article:tag" content="dp">
 <meta property="article:tag" content="二分">
 <meta property="article:tag" content="笛卡尔树">
 <meta property="article:tag" content="线段树">
@@ -247,7 +248,7 @@
 <p>现在我们假设这个节点的左右儿子的 $ dp $ 值都处理完毕，考虑合并 $ dp $ 值。</p>
 <p>对于 $ dp_{l,i}(i&lt;mid) $ ，这部分dp只已经在左儿子里求出来了，不用管。</p>
 <p>对于 $ dp_{l,i}(i=mid) $ ，有 $ dp_{l,i}=dp_{l,i-1}+h_i $ 。（因为最优解一定不在区间最大值）</p>
-<p>对于 $ dp_{l,i}(i&gt;mid) $ ，有 $ dp_{l,i}=\min(dp_{l,mid}+(i-mid)h_{mid},dp_{mid+1,i}(mid-l+1)h_{mid}) $ 。</p>
+<p>对于 $ dp_{l,i}(i&gt;mid) $ ，有 $ dp_{l,i}=\min(dp_{l,mid}+(i-mid)h_{mid},dp_{mid+1,i}+(mid-l+1)h_{mid}) $ 。</p>
 <p>这个 $ \min $ 的第一个值表示会议地址在最大值左边，第二个值表示会议地址在最大值右边。</p>
 <p>和 $ 19 $ 分做法的dp方程差不多。</p>
 <p>好像也不好做啊。</p>
@@ -299,6 +300,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/dp/" rel="tag"># dp</a>
               <a href="/tags/%E4%BA%8C%E5%88%86/" rel="tag"># 二分</a>
               <a href="/tags/%E7%AC%9B%E5%8D%A1%E5%B0%94%E6%A0%91/" rel="tag"># 笛卡尔树</a>
               <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"># 线段树</a>
@@ -405,7 +407,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
