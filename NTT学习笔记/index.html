@@ -327,7 +327,7 @@ k_4&\equiv\dfrac{a_3-a_4}{p_1p_2}&\pmod{p_3}
 <p>假设我们现在分治到了一个区间 $ [l,r] $ ，下一步肯定是分治 $ [l,mid] $ 这个区间。</p>
 <p>然后呢？我们需要快速处理区间 $ [l,mid] $ 向 $ [mid+1,r] $ 的贡献。</p>
 <p>实际上 NTT 卷一下就可以了。</p>
-<p>时间复杂度 $ T(n)=T\left(\dfrac{n}{2}\right)+O(n\log n)=O(n\log n) $ 。</p>
+<p>时间复杂度 $ T(n)=2T\left(\dfrac{n}{2}\right)+O(n\log n)=O(n\log^2 n) $ 。</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/80858343">提交记录</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/tyghl292">代码</a></p>
 <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=7162">hdu7162</a> 和 <a href="https://shijiuwan.github.io/hdu7162题解/">题解</a></p>
@@ -448,7 +448,7 @@ k_4&\equiv\dfrac{a_3-a_4}{p_1p_2}&\pmod{p_3}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
