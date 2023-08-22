@@ -20,15 +20,20 @@
     var CONFIG = {"hostname":"shijiuwan.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Wuyanru&amp;#39s blog">
-<meta property="og:url" content="http://shijiuwan.github.io/tags/STL/index.html">
+  <meta name="description" content="问题设现在有一个圆，圆心在 $ (x_c,y_c) $ ，半径为 $ r $ 。 还有一条直线，公式为 $ Ax+By+C&#x3D;0 $ 。 求交点个数以及坐标。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="直线和圆交点公式">
+<meta property="og:url" content="http://shijiuwan.github.io/%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%9C%86%E4%BA%A4%E7%82%B9%E5%85%AC%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Wuyanru&amp;#39s blog">
+<meta property="og:description" content="问题设现在有一个圆，圆心在 $ (x_c,y_c) $ ，半径为 $ r $ 。 还有一条直线，公式为 $ Ax+By+C&#x3D;0 $ 。 求交点个数以及坐标。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-08T08:07:47.000Z">
+<meta property="article:modified_time" content="2022-08-08T08:07:47.000Z">
 <meta property="article:author" content="Wuyanru">
+<meta property="article:tag" content="解析几何">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://shijiuwan.github.io/tags/STL/">
+<link rel="canonical" href="http://shijiuwan.github.io/%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%9C%86%E4%BA%A4%E7%82%B9%E5%85%AC%E5%BC%8F/">
 
 
 <script id="page-configurations">
@@ -36,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: STL | Wuyanru&#39s blog</title>
+  <title>直线和圆交点公式 | Wuyanru&#39s blog</title>
   
 
 
@@ -149,57 +154,143 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">STL
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%9C%86%E4%BA%A4%E7%82%B9%E5%85%AC%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Wuyanru.png">
+      <meta itemprop="name" content="Wuyanru">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuyanru&#39s blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          直线和圆交点公式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-08 16:07:47" itemprop="dateCreated datePublished" datetime="2022-08-08T16:07:47+08:00">2022-08-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/" itemprop="url" rel="index"><span itemprop="name">公式推导</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>设现在有一个圆，圆心在 $ (x_c,y_c) $ ，半径为 $ r $ 。</p>
+<p>还有一条直线，公式为 $ Ax+By+C=0 $ 。</p>
+<p>求交点个数以及坐标。</p>
+<span id="more"></span>
+<h2 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h2><p>显然最多只有两个交点。</p>
+<p>我们设交点坐标为 $ (x,y) $ 。</p>
+<p>那么一定会有这个方程组：</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+Ax+By+C=0&(1)\\
+(x-x_c)^2+(y-y_c)^2=r^2&(2)
+\end{cases}</script><p>当 $ B\ne 0 $ 时，我们可以通过方程 $ (1) $ ，使用 $ x $ 来表达出 $ y $ 。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+y=-\dfrac{Ax+C}{B}&&(3)
+\end{aligned}</script><p>然后将 $ (3) $ 带入 $ (2) $ ，开始暴力解方程。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(x-x_c)^2+(-\dfrac{Ax+C}{B}-y_c)^2&=r^2\\
+(x-x_c)^2+(\dfrac{Ax+C}{B}+y_c)^2&=r^2\\
+x^2-2x_cx+x_c^2+\dfrac{A^2x^2}{B^2}+\frac{C^2}{B^2}+y_c^2+\dfrac{2ACx}{B^2}+\dfrac{2Ay_cx}{B}+\dfrac{2Cy_c}{B}&=r^2\\
+(A^2+B^2)x^2+2(AC+ABy_c-B^2x_c)x+(B^2x_c^2+C^2+y_c^2B^2+2BCy_c-r^2B^2)&=0
+\end{aligned}</script><p>我们令 $ a=A^2+B^2,b=2(AC+ABy_c-B^2x_c),c=(B^2x_c^2+C^2+y^2_cB^2+2BCy_c-r^2B^2) $ 。</p>
+<p>这样子这个方程就变成了标准的一元二次方程。</p>
+<p>再令 $ \Delta=b^2-4ac $ 。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>那么当 $ \Delta&lt;0 $ 时，没有交点。</p>
+<p>当 $ \Delta=0 $ 时，交点横坐标都为 $ \dfrac{-b}{2a} $ 。</p>
+<p>当 $ \Delta&gt;0 $ 时，两个交点横坐标为 $ \dfrac{-b\pm\sqrt{\Delta}{}}{2a} $ 。</p>
+<p>容易发现，当 $ B=0 $ 时，仍满足此方程。</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-12-11T00:24:38+08:00"
-              content="2022-12-11">
-          12-11
-        </time>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Wuyanru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://shijiuwan.github.io/%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%9C%86%E4%BA%A4%E7%82%B9%E5%85%AC%E5%BC%8F/" title="直线和圆交点公式">http://shijiuwan.github.io/直线和圆交点公式/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/CSGRound3%E5%87%BA%E6%B8%B8/" itemprop="url">
-            <span itemprop="name">[CSGRound3]出游</span>
-          </a>
-      </div>
 
-    </header>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/" rel="tag"># 解析几何</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/SNOI2017%E9%81%97%E5%A4%B1%E7%9A%84%E7%AD%94%E6%A1%88/" rel="prev" title="[SNOI2017]遗失的答案">
+      <i class="fa fa-chevron-left"></i> [SNOI2017]遗失的答案
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/%E7%9B%B4%E7%BA%BF%E5%92%8C%E7%9B%B4%E7%BA%BF%E4%BA%A4%E7%82%B9%E5%85%AC%E5%BC%8F/" rel="next" title="直线和直线交点公式">
+      直线和直线交点公式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -246,6 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC"><span class="nav-number">2.</span> <span class="nav-text">推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -419,6 +511,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '162b1f8e183db0079875',
+      clientSecret: '2e51dbf4433b06ff21c5fc15976425b75bd4d71b',
+      repo        : 'shijiuwan.github.io',
+      owner       : 'shijiuwan',
+      admin       : ['shijiuwan'],
+      id          : 'd7725e9d29169630fb1f2376c39e9bae',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
