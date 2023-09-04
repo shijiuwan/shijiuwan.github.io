@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"shijiuwan.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="问题现在有两条直线。 第一条方程为 $ A_1x+B_1y+C_1&#x3D;0 $ 。 第二条方程为 $ A_2x+B_2y+C_2&#x3D;0 $ 。 求交点坐标。">
+  <meta name="description" content="一道结论小博弈 感觉挺难想，但是luogu上是绿">
 <meta property="og:type" content="article">
-<meta property="og:title" content="直线和直线交点公式">
-<meta property="og:url" content="http://shijiuwan.github.io/%E7%9B%B4%E7%BA%BF%E5%92%8C%E7%9B%B4%E7%BA%BF%E4%BA%A4%E7%82%B9%E5%85%AC%E5%BC%8F/index.html">
+<meta property="og:title" content="[USACO21FEB] Stone Game G">
+<meta property="og:url" content="http://shijiuwan.github.io/USACO21FG1/index.html">
 <meta property="og:site_name" content="Wuyanru&amp;#39s blog">
-<meta property="og:description" content="问题现在有两条直线。 第一条方程为 $ A_1x+B_1y+C_1&#x3D;0 $ 。 第二条方程为 $ A_2x+B_2y+C_2&#x3D;0 $ 。 求交点坐标。">
+<meta property="og:description" content="一道结论小博弈 感觉挺难想，但是luogu上是绿">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-08T08:56:51.000Z">
-<meta property="article:modified_time" content="2022-08-08T08:56:51.000Z">
+<meta property="article:published_time" content="2023-09-04T02:16:07.000Z">
+<meta property="article:modified_time" content="2023-09-04T02:16:07.000Z">
 <meta property="article:author" content="Wuyanru">
-<meta property="article:tag" content="解析几何">
+<meta property="article:tag" content="博弈论">
+<meta property="article:tag" content="结论题">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://shijiuwan.github.io/%E7%9B%B4%E7%BA%BF%E5%92%8C%E7%9B%B4%E7%BA%BF%E4%BA%A4%E7%82%B9%E5%85%AC%E5%BC%8F/">
+<link rel="canonical" href="http://shijiuwan.github.io/USACO21FG1/">
 
 
 <script id="page-configurations">
@@ -46,7 +47,7 @@
   };
 </script>
 
-  <title>直线和直线交点公式 | Wuyanru&#39s blog</title>
+  <title>[USACO21FEB] Stone Game G | Wuyanru&#39s blog</title>
   
 
 
@@ -161,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/%E7%9B%B4%E7%BA%BF%E5%92%8C%E7%9B%B4%E7%BA%BF%E4%BA%A4%E7%82%B9%E5%85%AC%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/USACO21FG1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/Wuyanru.png">
@@ -174,7 +175,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          直线和直线交点公式
+          [USACO21FEB] Stone Game G
         </h1>
 
         <div class="post-meta">
@@ -184,16 +185,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-08-08 16:56:51" itemprop="dateCreated datePublished" datetime="2022-08-08T16:56:51+08:00">2022-08-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/" itemprop="url" rel="index"><span itemprop="name">公式推导</span></a>
-                </span>
+              <time title="创建时间：2023-09-04 10:16:07" itemprop="dateCreated datePublished" datetime="2023-09-04T10:16:07+08:00">2023-09-04</time>
             </span>
 
           
@@ -207,42 +199,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>现在有两条直线。</p>
-<p>第一条方程为 $ A_1x+B_1y+C_1=0 $ 。</p>
-<p>第二条方程为 $ A_2x+B_2y+C_2=0 $ 。</p>
-<p>求交点坐标。</p>
+        <p>一道结论小博弈</p>
+<p>感觉挺难想，但是luogu上是绿</p>
 <span id="more"></span>
-<h2 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h2><p>显然，两条直线斜率分别为 $ -\dfrac{A_1}{B_1},-\dfrac{A_2}{B_2} $ 。</p>
-<p>所以当 $ -\dfrac{A_1}{B_1}=-\dfrac{A_2}{B_2}\Longleftrightarrow A_1B_2=A_2B_1 $ 时没有交点。</p>
-<p>所以有交点时，$ A_1B_2-A_2B_1\ne0 $ 。</p>
-<script type="math/tex; mode=display">
-\begin{cases}
-A_1x+B_1y+C_1=0&(1)\\
-A_2x+B_2y+C_2=0&(2)\\
-\end{cases}</script><p>第一个式子乘上 $ A_2 $ ，第二个式子乘上 $ A_1 $ ，得到：</p>
-<script type="math/tex; mode=display">
-\begin{cases}
-A_1A_2x+B_1A_2y+C_1A_2=0&(3)\\
-A_1A_2x+B_2A_1y+C_2A_1=0&(4)
-\end{cases}</script><p>两式相减：</p>
-<script type="math/tex; mode=display">
-(B_1A_2-B_2A_1)y+(C_1A_2-C_2A_1)=0\kern{10pt}(5)</script><p>随便搞搞：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-y&=-\dfrac{C_1A_2-C_2A_1}{B_1A_2-B_2A_1}\\
-y&=\dfrac{C_1A_2-C_2A_1}{B_2A_1-B_1A_2}\\
-\end{aligned}</script><p>带到 $ (1) $ 中：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-A_1x+B_1\times \dfrac{C_1A_2-C_2A_1}{B_2A_1-B_1A_2}+C_1&=0\\
-A_1x&=-B_1\times \dfrac{C_1A_2-C_2A_1}{B_2A_1-B_1A_2}-C_1\\
-A_1x&=B_1\times \dfrac{C_1A_2-C_2A_1}{B_1A_2-B_2A_1}-C_1\\
-A_1x&=\dfrac{C_1B_1A_2-C_2B_1A_1}{B_1A_2-B_2A_1}-C_1\\
-A_1x&=\dfrac{C_1B_1A_2-C_2B_1A_1-C_1B_1A_2+C_1B_2A_1}{B_1A_2-B_2A_1}\\
-A_1x&=\dfrac{C_1B_2A_1-C_2B_1A_1}{B_1A_2-B_2A_1}\\
-x&=\dfrac{C_1B_2-C_2B_1}{B_1A_2-B_2A_1}\\
-\end{aligned}</script><h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>当 $ A_1B_2-A_2B_1=0 $ 时没有交点；</p>
-<p>否则交点坐标为 $ \left(\dfrac{C_1B_2-C_2B_1}{B_1A_2-B_2A_1},\dfrac{C_1A_2-C_2A_1}{B_2A_1-B_1A_2}\right) $ 。</p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7413">题目链接</a></p>
+<p>现在有 $ n $ 堆石子和两个人 Alice、Bob，第 $ i $ 堆石子有 $ a_i $ 个。</p>
+<p>Alice 与 Bob 轮流取石子，第一个人第一次可以任选一堆，取任意（显然不能取成负数）石子。后面每一次取石子的个数必须是前一次的正整数倍（仍然为人选一堆），谁不能取谁输。</p>
+<p>问 Alice 开局有多少种方案使得自己胜利，选取不同的堆，或石子数量不同，都算不同的方案。</p>
+<p>$ 1\le n\le 10^5 $</p>
+<p>$ 1\le a_i \le 10^6 $</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p><del>啊，结论题</del></p>
+<p>这题看起来就不好 SG 函数，所以优先考虑什么情况有解。</p>
+<p>首先发现，若在第 $ x $ 个堆里拿了 $ y $ 个石子，那么相当于先令所有 $ 1\le i \le n : a_i\gets \left\lfloor\dfrac{a_i}{y}\right\rfloor $ ，然后令 $ a_x\gets a_x-1 $</p>
+<p>这样我们就可以忽略，每一次拿取数量必须是前一次倍数的限制。</p>
+<p>为方便表示，我们设 $ c_x $ 表示，恰有 $ x $ 个石子的堆的数量。</p>
+<p><del>不·</del>容易发现，若对于每一个数字 $ x $ ，都有 $ 2|c_x $ ，那么后手必胜。若先手在一个有 $ a $ 个石子的堆里拿走 $ b $ 个，那么后手一定能再找到一个恰有 $ a $ 个石子的堆，然后拿走 $ b $ 个石子。这样后手永远可以继续操作。</p>
+<p>对于剩下的情况，一定为先手必胜。先手可以找到一个最大的 $ x $ ，使得 $ 2\nmid c_x $ ，然后先手拿空任何一个有 $ x $ 个石子的堆，就可以转成上面的情况。</p>
+<p>知道了如何判断局面，那么考虑Alice如何进行操作。</p>
+<p>发现题目实际上在问，Alice开局有多少种拿法，使得局面变为先手必败。</p>
+<p>首先考虑枚举 $ s $ ，表示 Alice 第一次拿几个石子，这样我们就知道了 $ c’_x=\sum\limits_{\lfloor\frac{y}{s}\rfloor =x}c_y $ 。</p>
+<p>现在我们的目标是：选取一个数 $ x $ ，令 $ c’_x\gets c’_x-1,c’_{x-1}\gets c’_{x-1}+1 $ ，使得对于所有 $ i\ge 1 $ ，有 $ 2|c’_i $ ，方案数为 $ c’_x $ 。</p>
+<p>所以我们进行分类讨论：</p>
+<ol>
+<li><p>初始不存在 $ y $ 使得 $ 2\nmid c’_y $ ，那么显然无解。因为这样会导致 $ 2\nmid c’_{y} $ 。</p>
+</li>
+<li><p>初始恰存在一个 $ y $ 使得 $ 2\nmid c’_y $ </p>
+<p>若 $ y=1 $ ，显然满足；</p>
+<p>若 $ y&gt;1 $ ，则会导致 $ 2\nmid c’_{y-1} $ ，不满足。</p>
+</li>
+<li><p>初始恰存在两个数 $ y_1&lt;y_2 $ 满足 $ 2\nmid c’_y $ </p>
+<p>若 $ y_2=y_1+1 $ ，显然满足；</p>
+<p>若 $ y_2\ne y_1+1 $ ，则不满足。</p>
+</li>
+<li><p>若至少存在三个 $ y $ 使得 $ 2\nmid c’_y $ ，显然无解。</p>
+</li>
+</ol>
+<p>如果存在 $ x $ ，那么将答案加上初始的 $ c’_x $ 即可。</p>
+<p>时间复杂度 $ O(n+a\ln a) $ 。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> s=<span class="number">0</span>,w=<span class="number">1</span>;<span class="type">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span>((ch=<span class="built_in">getchar</span>())&gt;<span class="string">&#x27;9&#x27;</span>||ch&lt;<span class="string">&#x27;0&#x27;</span>) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) w=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>) s=s*<span class="number">10</span>+ch-<span class="string">&#x27;0&#x27;</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">return</span> s*w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> pre[<span class="number">2000001</span>];</span><br><span class="line"><span class="type">int</span> a[<span class="number">100001</span>];</span><br><span class="line">ll ans;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> len,<span class="type">int</span> id)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pre[id*len+len<span class="number">-1</span>]-pre[id*len<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=<span class="built_in">read</span>(),pre[a[i]]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2000000</span>;i++) pre[i]+=pre[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">1000000</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> wh1=<span class="number">0</span>,wh2=<span class="number">0</span>;<span class="type">bool</span> flag=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;i*j&lt;=<span class="number">1000000</span>;j++) <span class="keyword">if</span>(<span class="built_in">get</span>(i,j)&amp;<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!wh1) wh1=j;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(!wh2) wh2=j;</span><br><span class="line">            <span class="keyword">else</span> flag=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(wh2&amp;&amp;wh2==wh1+<span class="number">1</span>) ans+=<span class="built_in">get</span>(i,wh2);</span><br><span class="line">            <span class="keyword">if</span>(!wh2&amp;&amp;wh1==<span class="number">1</span>) ans+=<span class="built_in">get</span>(i,wh1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>感谢观看！</p>
 
     </div>
 
@@ -258,7 +253,7 @@ x&=\dfrac{C_1B_2-C_2B_1}{B_1A_2-B_2A_1}\\
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://shijiuwan.github.io/%E7%9B%B4%E7%BA%BF%E5%92%8C%E7%9B%B4%E7%BA%BF%E4%BA%A4%E7%82%B9%E5%85%AC%E5%BC%8F/" title="直线和直线交点公式">http://shijiuwan.github.io/直线和直线交点公式/</a>
+    <a href="http://shijiuwan.github.io/USACO21FG1/" title="[USACO21FEB] Stone Game G">http://shijiuwan.github.io/USACO21FG1/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -269,7 +264,8 @@ x&=\dfrac{C_1B_2-C_2B_1}{B_1A_2-B_2A_1}\\
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/" rel="tag"># 解析几何</a>
+              <a href="/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" rel="tag"># 博弈论</a>
+              <a href="/tags/%E7%BB%93%E8%AE%BA%E9%A2%98/" rel="tag"># 结论题</a>
           </div>
 
         
@@ -278,13 +274,10 @@ x&=\dfrac{C_1B_2-C_2B_1}{B_1A_2-B_2A_1}\\
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%9C%86%E4%BA%A4%E7%82%B9%E5%85%AC%E5%BC%8F/" rel="prev" title="直线和圆交点公式">
-      <i class="fa fa-chevron-left"></i> 直线和圆交点公式
+    <a href="/SXLK2023%E5%A1%AB%E6%95%B0%E6%B8%B8%E6%88%8F/" rel="prev" title="[省选联考2023]填数游戏">
+      <i class="fa fa-chevron-left"></i> [省选联考2023]填数游戏
     </a></div>
-      <div class="post-nav-item">
-    <a href="/ABC263H/" rel="next" title="ABC263H">
-      ABC263H <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -344,7 +337,7 @@ x&=\dfrac{C_1B_2-C_2B_1}{B_1A_2-B_2A_1}\\
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC"><span class="nav-number">2.</span> <span class="nav-text">推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -529,7 +522,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'shijiuwan.github.io',
       owner       : 'shijiuwan',
       admin       : ['shijiuwan'],
-      id          : '21a4a622484768f7cb8ab3f288b05258',
+      id          : '72dd09fc626e1091ab69fc3c5f23dc02',
         language: '',
       distractionFreeMode: true
     });
