@@ -20,23 +20,21 @@
     var CONFIG = {"hostname":"shijiuwan.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="打模拟赛遇到的，同学都是一眼秒，只有我在乱七八糟贪。 最近已经遇到好几个题是一眼dp，但我没看出来了。 题目链接">
+  <meta name="description" content="一道结论小博弈 感觉挺难想，但是luogu上是绿">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[JOI2015]舞踏会">
-<meta property="og:url" content="http://shijiuwan.github.io/JOI2015_4/index.html">
+<meta property="og:title" content="[USACO21FEB] Stone Game G">
+<meta property="og:url" content="http://shijiuwan.github.io/USACO21FG-Stone-Game/index.html">
 <meta property="og:site_name" content="Wuyanru&amp;#39s blog">
-<meta property="og:description" content="打模拟赛遇到的，同学都是一眼秒，只有我在乱七八糟贪。 最近已经遇到好几个题是一眼dp，但我没看出来了。 题目链接">
+<meta property="og:description" content="一道结论小博弈 感觉挺难想，但是luogu上是绿">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://shijiuwan.github.io/pic/JOI2015_1.jpg">
-<meta property="article:published_time" content="2023-07-10T13:15:18.000Z">
-<meta property="article:modified_time" content="2023-07-10T13:15:18.000Z">
+<meta property="article:published_time" content="2023-09-04T02:16:07.000Z">
+<meta property="article:modified_time" content="2023-09-04T02:16:07.000Z">
 <meta property="article:author" content="Wuyanru">
-<meta property="article:tag" content="dp">
-<meta property="article:tag" content="二分">
+<meta property="article:tag" content="博弈论">
+<meta property="article:tag" content="结论题">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://shijiuwan.github.io/pic/JOI2015_1.jpg">
 
-<link rel="canonical" href="http://shijiuwan.github.io/JOI2015_4/">
+<link rel="canonical" href="http://shijiuwan.github.io/USACO21FG-Stone-Game/">
 
 
 <script id="page-configurations">
@@ -49,7 +47,7 @@
   };
 </script>
 
-  <title>[JOI2015]舞踏会 | Wuyanru&#39s blog</title>
+  <title>[USACO21FEB] Stone Game G | Wuyanru&#39s blog</title>
   
 
 
@@ -164,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/JOI2015_4/">
+    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/USACO21FG-Stone-Game/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/Wuyanru.png">
@@ -177,7 +175,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          [JOI2015]舞踏会
+          [USACO21FEB] Stone Game G
         </h1>
 
         <div class="post-meta">
@@ -187,7 +185,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-07-10 21:15:18" itemprop="dateCreated datePublished" datetime="2023-07-10T21:15:18+08:00">2023-07-10</time>
+              <time title="创建时间：2023-09-04 10:16:07" itemprop="dateCreated datePublished" datetime="2023-09-04T10:16:07+08:00">2023-09-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -199,7 +197,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A2%98%E8%A7%A3/JOI/" itemprop="url" rel="index"><span itemprop="name">JOI</span></a>
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/USACO/" itemprop="url" rel="index"><span itemprop="name">USACO</span></a>
                 </span>
             </span>
 
@@ -221,43 +219,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>打模拟赛遇到的，同学都是一眼秒，只有我在乱七八糟贪。</p>
-<p>最近已经遇到好几个题是一眼dp，但我没看出来了。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_joi2015ho_d">题目链接</a></p>
+        <p>一道结论小博弈</p>
+<p>感觉挺难想，但是luogu上是绿</p>
 <span id="more"></span>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>现在有 $ n $ 个人在一个队列里面，每一个人有一个能力值是 $ a_i $ ，保证 $ n $ 是奇数。</p>
-<p>每一次取出队列中最前面的三个人，去掉能力最大的和最小的，把剩下的那个人（中位数）放到队尾。</p>
-<p>最后剩下一个人的时候，留下的那个人就是这种排队方案的权值。</p>
-<p>现在已经有 $ m $ 个人确定了自己初始时在队列中的位置，你需要给剩下的 $ n-m $ 个人拍好位置，使得权值最大。</p>
-<p>$ 3\le n&lt;99999 $</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先我们看到中位数，就能很明显想到二分。</p>
-<p>所以我们二分，现在问题变成了：每个人能力值为 $ 0 $ 或 $ 1 $ ，能否使最后的权值是 $ 1 $ 。</p>
-<p>这个问题似乎不太好做，我们来模拟一下，假如当前队列中人的编号为 $ 1\sim 9 $ ，我们来模拟这个过程。</p>
-<p>初始时，队列为：$ [1,2,3,4,5,6,7,8,9] $ 。</p>
-<p>首先拿出前三个人，并将中位数插入队尾。我们并不知道哪个人是中位数。</p>
-<p>所以我们可以稍微转化一下操作，把他变成这个样子：</p>
-<p>把队列的前三个人一起拿走，并且加入一个新人，能力值为前三个人的中位数。</p>
-<p>所以我们现在假设加入的人是 $ 10 $ 号。</p>
-<p>队列为： $ [4,5,6,7,8,9,10] $ 。</p>
-<p>依次执行这个过程，得到：</p>
-<p>$ [7,8,9,10,11] $ </p>
-<p>$ [10,11,12] $ </p>
-<p>$ [13] $ </p>
-<p>所以我们的问题就是 $ 13 $ 号人能力是否能为 $ 1 $ 。</p>
-<p>通过这个模拟的过程，我们完全可以知道每一个人的能力值是由哪三个人决定的，我们把图画出来。</p>
-<p><img src="/pic/JOI2015_1.jpg" alt=""></p>
-<p>我们发现，这种关系一定会是一个树状的结构。</p>
-<p>同时，我们考虑到权值只有 $ 0 $ 和 $ 1 $ ，发现实际就是在问，能否合理地分配 $ 1 $ 的位置，使得根的权值为 $ 1 $ 。</p>
-<p>那么我们考虑对其进行树形dp。</p>
-<p>设 $ dp_i $ 表示，如果要让 $ i $ 的权值为 $ 1 $ ，至少需要在子树内额外放置多少个 $ 1 $ 。</p>
-<p>当 $ i $ 为叶节点，且上面已经有一个 $ 1 $ 时，不需要多余填，这里的值就是 $ 1 $ ，所以 $ dp_i=0 $ ；</p>
-<p>当 $ i $ 为叶节点，且上面已经有一个 $ 0 $ 时，这个位置不可能是 $ 1 $ ，那么 $ dp_i=+\infty $ ；</p>
-<p>当 $ i $ 为叶节点，且上面时还没有填数字时，$ dp_i=1 $ ；</p>
-<p>否则假设 $ i $ 的三个儿子为 $ a,b,c $ ，那么 $ dp_i=\min(dp_a+dp_b,dp_a+dp_c,dp_b+dp_c)=dp_a+dp_b+dp_c-\max(dp_a,dp_b,dp_c) $ 。</p>
-<p>假如我们有 $ x $ 个 $ 1 $ 暂未放置，那么在 $ dp_r\le x $ 时有解。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>实际上在写的时候，不需要建树。</p>
-<p>直接使用队列进行模拟即可。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> inf 0x3f3f3f3f3f3f3f3fll</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> s=<span class="number">0</span>,w=<span class="number">1</span>;<span class="type">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span>((ch=<span class="built_in">getchar</span>())&gt;<span class="string">&#x27;9&#x27;</span>||ch&lt;<span class="string">&#x27;0&#x27;</span>) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) w=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>) s=s*<span class="number">10</span>+ch-<span class="string">&#x27;0&#x27;</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">return</span> s*w;</span><br><span class="line">&#125;</span><br><span class="line">ll dp[<span class="number">200001</span>];</span><br><span class="line"><span class="type">int</span> a[<span class="number">100001</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">100001</span>];</span><br><span class="line"><span class="type">int</span> c0,c1;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">bool</span> <span class="title">cal</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    c0=c1=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n-m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b[i]&gt;=num) c1++;</span><br><span class="line">        <span class="keyword">else</span> c0++;</span><br><span class="line">    &#125;</span><br><span class="line">    queue&lt;<span class="type">int</span>&gt;que;<span class="type">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ++cnt;</span><br><span class="line">        <span class="keyword">if</span>(a[i]==<span class="number">-1</span>) dp[cnt]=<span class="number">1</span>,que.<span class="built_in">push</span>(cnt);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a[i]&gt;=num) dp[cnt]=<span class="number">0</span>,que.<span class="built_in">push</span>(cnt);</span><br><span class="line">        <span class="keyword">else</span> dp[cnt]=<span class="number">0x3f3f3f3f</span>,que.<span class="built_in">push</span>(cnt);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(que.<span class="built_in">size</span>()&gt;<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a1=que.<span class="built_in">front</span>();que.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> a2=que.<span class="built_in">front</span>();que.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> a3=que.<span class="built_in">front</span>();que.<span class="built_in">pop</span>();</span><br><span class="line">        cnt++,dp[cnt]=dp[a1]+dp[a2]+dp[a3]-<span class="built_in">max</span>(dp[a1],<span class="built_in">max</span>(dp[a2],dp[a3]));</span><br><span class="line">        que.<span class="built_in">push</span>(cnt);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[que.<span class="built_in">front</span>()]&lt;=c1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>();</span><br><span class="line">    <span class="built_in">memset</span>(a,<span class="number">-1</span>,<span class="built_in">sizeof</span>(a));</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x=<span class="built_in">read</span>(),y=<span class="built_in">read</span>();</span><br><span class="line">        a[y]=x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n-m;i++) b[i]=<span class="built_in">read</span>();</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>&lt;&lt;<span class="number">30</span>;i;i&gt;&gt;=<span class="number">1</span>) <span class="keyword">if</span>(<span class="built_in">cal</span>(ans+i)) ans+=i;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7413">题目链接</a></p>
+<p>现在有 $ n $ 堆石子和两个人 Alice、Bob，第 $ i $ 堆石子有 $ a_i $ 个。</p>
+<p>Alice 与 Bob 轮流取石子，第一个人第一次可以任选一堆，取任意（显然不能取成负数）石子。后面每一次取石子的个数必须是前一次的正整数倍（仍然为人选一堆），谁不能取谁输。</p>
+<p>问 Alice 开局有多少种方案使得自己胜利，选取不同的堆，或石子数量不同，都算不同的方案。</p>
+<p>$ 1\le n\le 10^5 $</p>
+<p>$ 1\le a_i \le 10^6 $</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p><del>啊，结论题</del></p>
+<p>这题看起来就不好 SG 函数，所以优先考虑什么情况有解。</p>
+<p>首先发现，若在第 $ x $ 个堆里拿了 $ y $ 个石子，那么相当于先令所有 $ 1\le i \le n : a_i\gets \left\lfloor\dfrac{a_i}{y}\right\rfloor $ ，然后令 $ a_x\gets a_x-1 $</p>
+<p>这样我们就可以忽略，每一次拿取数量必须是前一次倍数的限制。</p>
+<p>为方便表示，我们设 $ c_x $ 表示，恰有 $ x $ 个石子的堆的数量。</p>
+<p><del>不·</del>容易发现，若对于每一个数字 $ x $ ，都有 $ 2|c_x $ ，那么后手必胜。若先手在一个有 $ a $ 个石子的堆里拿走 $ b $ 个，那么后手一定能再找到一个恰有 $ a $ 个石子的堆，然后拿走 $ b $ 个石子。这样后手永远可以继续操作。</p>
+<p>对于剩下的情况，一定为先手必胜。先手可以找到一个最大的 $ x $ ，使得 $ 2\nmid c_x $ ，然后先手拿空任何一个有 $ x $ 个石子的堆，就可以转成上面的情况。</p>
+<p>知道了如何判断局面，那么考虑Alice如何进行操作。</p>
+<p>发现题目实际上在问，Alice开局有多少种拿法，使得局面变为先手必败。</p>
+<p>首先考虑枚举 $ s $ ，表示 Alice 第一次拿几个石子，这样我们就知道了 $ c’_x=\sum\limits_{\lfloor\frac{y}{s}\rfloor =x}c_y $ 。</p>
+<p>现在我们的目标是：选取一个数 $ x $ ，令 $ c’_x\gets c’_x-1,c’_{x-1}\gets c’_{x-1}+1 $ ，使得对于所有 $ i\ge 1 $ ，有 $ 2|c’_i $ ，方案数为 $ c’_x $ 。</p>
+<p>所以我们进行分类讨论：</p>
+<ol>
+<li><p>初始不存在 $ y $ 使得 $ 2\nmid c’_y $ ，那么显然无解。因为这样会导致 $ 2\nmid c’_{y} $ 。</p>
+</li>
+<li><p>初始恰存在一个 $ y $ 使得 $ 2\nmid c’_y $ </p>
+<p>若 $ y=1 $ ，显然满足；</p>
+<p>若 $ y&gt;1 $ ，则会导致 $ 2\nmid c’_{y-1} $ ，不满足。</p>
+</li>
+<li><p>初始恰存在两个数 $ y_1&lt;y_2 $ 满足 $ 2\nmid c’_y $ </p>
+<p>若 $ y_2=y_1+1 $ ，显然满足；</p>
+<p>若 $ y_2\ne y_1+1 $ ，则不满足。</p>
+</li>
+<li><p>若至少存在三个 $ y $ 使得 $ 2\nmid c’_y $ ，显然无解。</p>
+</li>
+</ol>
+<p>如果存在 $ x $ ，那么将答案加上初始的 $ c’_x $ 即可。</p>
+<p>时间复杂度 $ O(n+a\ln a) $ 。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> s=<span class="number">0</span>,w=<span class="number">1</span>;<span class="type">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span>((ch=<span class="built_in">getchar</span>())&gt;<span class="string">&#x27;9&#x27;</span>||ch&lt;<span class="string">&#x27;0&#x27;</span>) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) w=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>) s=s*<span class="number">10</span>+ch-<span class="string">&#x27;0&#x27;</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">return</span> s*w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> pre[<span class="number">2000001</span>];</span><br><span class="line"><span class="type">int</span> a[<span class="number">100001</span>];</span><br><span class="line">ll ans;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> len,<span class="type">int</span> id)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pre[id*len+len<span class="number">-1</span>]-pre[id*len<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=<span class="built_in">read</span>(),pre[a[i]]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2000000</span>;i++) pre[i]+=pre[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">1000000</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> wh1=<span class="number">0</span>,wh2=<span class="number">0</span>;<span class="type">bool</span> flag=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;i*j&lt;=<span class="number">1000000</span>;j++) <span class="keyword">if</span>(<span class="built_in">get</span>(i,j)&amp;<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!wh1) wh1=j;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(!wh2) wh2=j;</span><br><span class="line">            <span class="keyword">else</span> flag=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(wh2&amp;&amp;wh2==wh1+<span class="number">1</span>) ans+=<span class="built_in">get</span>(i,wh2);</span><br><span class="line">            <span class="keyword">if</span>(!wh2&amp;&amp;wh1==<span class="number">1</span>) ans+=<span class="built_in">get</span>(i,wh1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>感谢观看！</p>
 
     </div>
@@ -274,7 +273,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://shijiuwan.github.io/JOI2015_4/" title="[JOI2015]舞踏会">http://shijiuwan.github.io/JOI2015_4/</a>
+    <a href="http://shijiuwan.github.io/USACO21FG-Stone-Game/" title="[USACO21FEB] Stone Game G">http://shijiuwan.github.io/USACO21FG-Stone-Game/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -285,8 +284,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/dp/" rel="tag"># dp</a>
-              <a href="/tags/%E4%BA%8C%E5%88%86/" rel="tag"># 二分</a>
+              <a href="/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" rel="tag"># 博弈论</a>
+              <a href="/tags/%E7%BB%93%E8%AE%BA%E9%A2%98/" rel="tag"># 结论题</a>
           </div>
 
         
@@ -295,12 +294,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/NOI2023%E6%B8%B8%E8%AE%B0/" rel="prev" title="NOI2023游记">
-      <i class="fa fa-chevron-left"></i> NOI2023游记
+    <a href="/SXLK2023%E5%A1%AB%E6%95%B0%E6%B8%B8%E6%88%8F/" rel="prev" title="[省选联考2023]填数游戏">
+      <i class="fa fa-chevron-left"></i> [省选联考2023]填数游戏
     </a></div>
       <div class="post-nav-item">
-    <a href="/NOI2022%E4%BC%97%E6%95%B0/" rel="next" title="[NOI2022] 众数">
-      [NOI2022] 众数 <i class="fa fa-chevron-right"></i>
+    <a href="/NOI2023%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="next" title="[NOI2023] 字符串">
+      [NOI2023] 字符串 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -377,7 +376,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -390,7 +389,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -566,7 +565,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'shijiuwan.github.io',
       owner       : 'shijiuwan',
       admin       : ['shijiuwan'],
-      id          : 'ff095fd83cbfc1ffbba12c07d4745c99',
+      id          : '1175a6e93c4d5ff45463732d57d36c58',
         language: '',
       distractionFreeMode: true
     });
