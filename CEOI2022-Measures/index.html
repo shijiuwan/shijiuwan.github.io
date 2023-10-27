@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/W3.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/W1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shijiuwan.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="模拟赛题。 感觉考场上随便推一下应该就会做了，但是我就是坐那干瞪了一整场。 那应该还是我菜了 题目链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[CEOI2022] Measures">
+<meta property="og:url" content="http://shijiuwan.github.io/CEOI2022-Measures/index.html">
+<meta property="og:site_name" content="Wuyanru&amp;#39s blog">
+<meta property="og:description" content="模拟赛题。 感觉考场上随便推一下应该就会做了，但是我就是坐那干瞪了一整场。 那应该还是我菜了 题目链接">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-27T12:20:09.000Z">
+<meta property="article:modified_time" content="2023-10-27T12:20:09.000Z">
+<meta property="article:author" content="Wuyanru">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="结论题">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shijiuwan.github.io/CEOI2022-Measures/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[CEOI2022] Measures | Wuyanru&#39s blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Wuyanru&#39s blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/CEOI2022-Measures/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Wuyanru.png">
+      <meta itemprop="name" content="Wuyanru">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuyanru&#39s blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [CEOI2022] Measures
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-10-27 20:20:09" itemprop="dateCreated datePublished" datetime="2023-10-27T20:20:09+08:00">2023-10-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/CEOI/" itemprop="url" rel="index"><span itemprop="name">CEOI</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>模拟赛题。</p>
+<p>感觉考场上随便推一下应该就会做了，但是我就是坐那干瞪了一整场。</p>
+<p><del>那应该还是我菜了</del></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P9000">题目链接</a></p>
+<span id="more"></span>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>现在有一根数轴，这个数轴上初始有 $ n $ 个人，其中第 $ i $ 个人的坐标为 $ a_i $ 。</p>
+<p>每一个人都可以以每秒 $ 1 $ 单位长度的速度进行移动。</p>
+<p>你需要求出，最优情况下，需要多少时间让他们来回走动，使得两两距离都 $ \ge d $ ，其中 $ d $ 为输入给定的数字。</p>
+<p>特别地，本题有 $ m $ 次插入操作，第 $ i $ 次操作插入一个在 $ b_i $ 的人，你需要在每一次插入操作后，输出上述问题的答案。</p>
+<p>$ 1\le n,m\le 2\times 10^5 $</p>
+<p>$ 1\le d,a_i,b_i\le 10^9 $</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>感觉是一个小结论题，但是结论稍微推一下就能推出来。</p>
+<p>假设只有单组询问，我们首先将所有人按照初始位置排序，他们的最终顺序显然和初始顺序一样，</p>
+<p>即不可能有两人相对方向交换。</p>
+<p>设第 $ i $ 个人初始位置为 $ x_i $ ，最终位置是 $ y_i $ ，时间（即答案）为 $ t $ 。</p>
+<p>首先显然，对于任意两个人 $ i,j(i&lt;j) $ ，会有 $ y_j-y_i\ge (j-i)d $ 。</p>
+<p>比较显然，因为这两个人中间恰有 $ j-i $ 个间隔，每一个间隔长度都至少是 $ d $ 。</p>
+<p>把上面的式子稍化一下，就可以得到 $ y_i-id\le y_j-jd $ 。</p>
+<p>其次，我们还有每一个人最终位置的限制，即 $ x_i-t\le y_i\le x_i+t $ 。</p>
+<p>我们发现上面一条，两个人在比较时，采用的是 $ y_i-id $ ，所以我们把下面的限制也改一下。</p>
+<p>$ x_i-id-t\le y_i-id\le x_i-id+t $ 。</p>
+<p>其实整个问题其实在问，选择一个最小的 $ t $ ，使得每一个人 $ i $ 能选择一个数字 $ z_i $ ，使得 $ z_i\in [x_i-id-t,x_i-id+t] $ 且 $ z_{i-1}\le z_i $ 。</p>
+<p>假如我们已经确定了 $ t $ 是多少，能否知道这个 $ t $ 是否合法呢？</p>
+<p>因为有了 $ z_i $ 递增这个限制，我们肯定是让前面的 $ z_i $ 越小越好。</p>
+<p>所以从贪心的角度考虑，我们选择的 $ z_i $ 一定有 $ z_i=\max(z_{i-1},x_i-id-t) $ 。</p>
+<p>我们只需要检查一下是否有所有 $ z_i\le x_i-id+t $ 就好了。</p>
+<p>不难发现，上述检验是充要的。</p>
+<p>然后呢？</p>
+<p>再仔细观察，我们会发现有一个更简单的式子：</p>
+<p>$ z_i=\max\limits_{j=1}^i x_j-jd-t $</p>
+<p>很好证明，对上面 $ z_i $ 的式子进行归纳即可。</p>
+<p>而 $ t $ 合法的充要条件，其实就是对于任意的 $ i $ ，有 $ \max\limits_{j=1}^i x_j-jd-t\le x_i-id+t$ 。</p>
+<p>所以，$ 2t\ge \max\limits_{i=1}^n\max\limits_{j=1}^{i-1}(x_j-jd)-(x_i-id) $</p>
+<p>我们要求的最小的 $ t $ 其实就是 $ \dfrac{\max\limits_{i=1}^n\max\limits_{j=1}^{i-1}(x_j-jd)-(x_i-id)}{2} $</p>
+<p>线段树进行统计即可。</p>
+<p>时间复杂度 $ O((n+m)\log (n+m)) $ 。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> inf 0x3f3f3f3f3f3f3f3fll</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> s=<span class="number">0</span>,w=<span class="number">1</span>;<span class="type">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span>((ch=<span class="built_in">getchar</span>())&gt;<span class="string">&#x27;9&#x27;</span>||ch&lt;<span class="string">&#x27;0&#x27;</span>) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) w=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>) s=s*<span class="number">10</span>+ch-<span class="string">&#x27;0&#x27;</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">return</span> s*w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> id;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">&#125;a[<span class="number">400001</span>];</span><br><span class="line">ll num[<span class="number">1600001</span>];</span><br><span class="line">ll ma[<span class="number">1600001</span>];</span><br><span class="line">ll mi[<span class="number">1600001</span>];</span><br><span class="line">ll c[<span class="number">1600001</span>];</span><br><span class="line"><span class="type">int</span> t[<span class="number">400001</span>];</span><br><span class="line"><span class="type">int</span> w[<span class="number">400001</span>];</span><br><span class="line"><span class="type">int</span> x[<span class="number">400001</span>];</span><br><span class="line"><span class="type">int</span> n,m,d;</span><br><span class="line"><span class="type">int</span> cnt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">(<span class="type">int</span> p,<span class="type">int</span> pl,<span class="type">int</span> pr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    num[p]=-inf,ma[p]=-inf,mi[p]=inf;</span><br><span class="line">    <span class="keyword">if</span>(pl==pr) <span class="keyword">return</span> ;</span><br><span class="line">    <span class="type">int</span> mid=(pl+pr)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">build</span>(p*<span class="number">2</span>,pl,mid);</span><br><span class="line">    <span class="built_in">build</span>(p*<span class="number">2</span>|<span class="number">1</span>,mid+<span class="number">1</span>,pr);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">push_up</span><span class="params">(<span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    c[p]=c[p*<span class="number">2</span>]+c[p*<span class="number">2</span>|<span class="number">1</span>];</span><br><span class="line">    ma[p]=<span class="built_in">max</span>(ma[p*<span class="number">2</span>],ma[p*<span class="number">2</span>|<span class="number">1</span>]-d*c[p*<span class="number">2</span>]);</span><br><span class="line">    mi[p]=<span class="built_in">min</span>(mi[p*<span class="number">2</span>],mi[p*<span class="number">2</span>|<span class="number">1</span>]-d*c[p*<span class="number">2</span>]);</span><br><span class="line">    num[p]=<span class="built_in">max</span>(<span class="built_in">max</span>(num[p*<span class="number">2</span>],num[p*<span class="number">2</span>|<span class="number">1</span>]),ma[p*<span class="number">2</span>]-(mi[p*<span class="number">2</span>|<span class="number">1</span>]-c[p*<span class="number">2</span>]*d));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">change</span><span class="params">(<span class="type">int</span> p,<span class="type">int</span> pl,<span class="type">int</span> pr,<span class="type">int</span> x,<span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(pl==pr)</span><br><span class="line">    &#123;</span><br><span class="line">        mi[p]=ma[p]=y;</span><br><span class="line">        c[p]=<span class="number">1</span>,num[p]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> mid=(pl+pr)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;=mid) <span class="built_in">change</span>(p*<span class="number">2</span>,pl,mid,x,y);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">change</span>(p*<span class="number">2</span>|<span class="number">1</span>,mid+<span class="number">1</span>,pr,x,y);</span><br><span class="line">    <span class="built_in">push_up</span>(p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">build</span>(<span class="number">1</span>,<span class="number">1</span>,n+m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n+m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">change</span>(<span class="number">1</span>,<span class="number">1</span>,n+m,w[i],x[i]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i&gt;n)</span><br><span class="line">        &#123;</span><br><span class="line">            ll ans=<span class="built_in">max</span>(num[<span class="number">1</span>],<span class="number">0ll</span>);</span><br><span class="line">            <span class="keyword">if</span>(num[<span class="number">1</span>]&amp;<span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%lld.5 &quot;</span>,ans/<span class="number">2</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%lld &quot;</span>,ans/<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>(),d=<span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n+m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        a[i].x=x[i]=<span class="built_in">read</span>();</span><br><span class="line">        a[i].id=i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+m+<span class="number">1</span>,[](node a,node b)&#123; <span class="keyword">return</span> a.x&lt;b.x;&#125;);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n+m;i++) w[a[i].id]=i;</span><br><span class="line">    <span class="built_in">solve</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>感谢观看！</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Wuyanru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://shijiuwan.github.io/CEOI2022-Measures/" title="[CEOI2022] Measures">http://shijiuwan.github.io/CEOI2022-Measures/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag"># 贪心</a>
+              <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"># 线段树</a>
+              <a href="/tags/%E7%BB%93%E8%AE%BA%E9%A2%98/" rel="tag"># 结论题</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/COCI2021-Usmjeravanje/" rel="prev" title="[COCI2021-2022#5] Usmjeravanje">
+      <i class="fa fa-chevron-left"></i> [COCI2021-2022#5] Usmjeravanje
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wuyanru"
+      src="/images/Wuyanru.png">
+  <p class="site-author-name" itemprop="name">Wuyanru</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">true</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '162b1f8e183db0079875',
+      clientSecret: '2e51dbf4433b06ff21c5fc15976425b75bd4d71b',
+      repo        : 'shijiuwan.github.io',
+      owner       : 'shijiuwan',
+      admin       : ['shijiuwan'],
+      id          : 'b5298139084916640b2bdddae9858c86',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
