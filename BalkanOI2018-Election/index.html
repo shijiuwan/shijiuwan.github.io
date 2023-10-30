@@ -239,7 +239,7 @@
 <p>考虑 $ suf’_i $ 的值是多少，一定有 $ suf’_i=suf_i+c $ ，其中 $ c $ 为正着构造时，在 $ [i,n] $ 内删除的数字个数。</p>
 <p>那么就会有 $ c=-\min\limits_{j=0}^npre_j+\min\limits_{j=0}^{i-1}pre_j $ ，其中 $-\min\limits_{i=0}^npre_i$ 为删除的数字总数，$ -\min\limits_{i=0}^{i-1}pre_i $ 是在区间 $ [0,i) $ 内删除的数字个数，两者做差即为 $ c $ 。</p>
 <p>所以 $ suf’_i=suf_i-\min\limits_{j=0}^npre_j+\min\limits_{j=0}^{i-1}pre_j $ 。</p>
-<p>则答案为 $ -\min\limits_{i=0}^npre_i-\min\limits_{i=1}^{n+1}\{suf_i-\min\limits_{j=0}^npre_j+\min\limits_{j=0}^{i-1}pre_j\}=-\min\limits_{i=1}^{n+1}\{suf_i+\min\limits_{j=0}^{i-1}pre_j\} $</p>
+<p>则答案为 $ -\min\limits_{i=0}^npre_i-\min\limits_{i=1}^{n+1}\{suf_i-\min\limits_{j=0}^npre_j+\min\limits_{j=0}^{i-1}pre_j\}=-\min\limits_{i=1}^{n+1}\{suf_i+\min\limits_{j=0}^{i-1}pre_j\}=-\min\limits_{i=1}^{n+1}\min\limits_{j=0}^{i-1}(suf_i+pre_j) $</p>
 <p>也就是说，我们需要找到一段前缀与一段后缀，使得他们不相交，且和最小(答案为它们的相反数)。</p>
 <p>即答案为区间最大子段和-区间和，线段树维护即可。</p>
 <p>时间复杂度为 $ O(n+m\log n) $ 。</p>
