@@ -244,7 +244,7 @@
 <p>所以我们可以知道，所有的水滴是永远不会相遇（合并）的。</p>
 <p>然后我们还能知道，对于一组询问 $ t,x,y $ ，假如在时间 $ t $ 时 $ (x,y) $ 上有水滴，那么这个水滴一定是在时间 $ t-x-y $ 出现的。</p>
 <p>所以对于每一个 $ x+y&gt;t $ 的询问，我们可以直接进行回答（永远不可能出现这样的情况）。</p>
-<p>然后对于没一组询问，令数组 $ dp_{i,j} $ 为，前 $ t-x-y $ 出现的所有水滴中，经过格子 $ (x,y) $ 的有多少个。</p>
+<p>然后对于每一组询问，令数组 $ dp_{i,j} $ 为，前 $ t-x-y $ 出现的所有水滴中，经过格子 $ (x,y) $ 的有多少个。</p>
 <p>首先我们知道，每一个水滴一开始都在 $ (0,0) $，所以就会有 $ dp_{0,0}=t-x-y+1 $ 。</p>
 <p>然后呢？怎么转移？</p>
 <p>我们会发现，假如一共有 $ c $ 个水滴经过了格子 $ (a,b) $ ，那么这 $ c $ 个水滴中，一定会有 $ \left\lceil\frac{c}{2}\right\rceil $ 个水滴向右走，有 $ \left\lfloor\frac{c}{2}\right\rfloor $ 个水滴向下走。</p>
@@ -376,14 +376,14 @@ dp_{i,j}=\left\lfloor\dfrac{dp_{i-1,j}}{2}\right\rfloor+\left\lceil\dfrac{dp_{i,
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
