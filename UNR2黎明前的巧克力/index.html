@@ -20,23 +20,20 @@
     var CONFIG = {"hostname":"shijiuwan.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本文为作者的学习笔记，其中主要包含作者学习时的一些笔记，以及一些例题。如果有小伙伴看到这篇博客没有写完的话，那一定是我咕咕咕了。 事实上这只是一个目录。">
+  <meta name="description" content="今天一个集训队互测的前置题，补了感觉不错，所以写篇题解（ 题目链接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多项式学习笔记">
-<meta property="og:url" content="http://shijiuwan.github.io/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="[UNR#2] 黎明前的巧克力">
+<meta property="og:url" content="http://shijiuwan.github.io/UNR2%E9%BB%8E%E6%98%8E%E5%89%8D%E7%9A%84%E5%B7%A7%E5%85%8B%E5%8A%9B/index.html">
 <meta property="og:site_name" content="Wuyanru&amp;#39s blog">
-<meta property="og:description" content="本文为作者的学习笔记，其中主要包含作者学习时的一些笔记，以及一些例题。如果有小伙伴看到这篇博客没有写完的话，那一定是我咕咕咕了。 事实上这只是一个目录。">
+<meta property="og:description" content="今天一个集训队互测的前置题，补了感觉不错，所以写篇题解（ 题目链接">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-05T07:35:28.000Z">
-<meta property="article:modified_time" content="2022-08-05T07:35:28.000Z">
+<meta property="article:published_time" content="2023-11-21T12:33:44.000Z">
+<meta property="article:modified_time" content="2023-11-21T12:33:44.000Z">
 <meta property="article:author" content="Wuyanru">
-<meta property="article:tag" content="FFT">
-<meta property="article:tag" content="FMT">
 <meta property="article:tag" content="FWT">
-<meta property="article:tag" content="NTT">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://shijiuwan.github.io/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="http://shijiuwan.github.io/UNR2%E9%BB%8E%E6%98%8E%E5%89%8D%E7%9A%84%E5%B7%A7%E5%85%8B%E5%8A%9B/">
 
 
 <script id="page-configurations">
@@ -49,7 +46,7 @@
   };
 </script>
 
-  <title>多项式学习笔记 | Wuyanru&#39s blog</title>
+  <title>[UNR#2] 黎明前的巧克力 | Wuyanru&#39s blog</title>
   
 
 
@@ -164,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/UNR2%E9%BB%8E%E6%98%8E%E5%89%8D%E7%9A%84%E5%B7%A7%E5%85%8B%E5%8A%9B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/Wuyanru.png">
@@ -177,7 +174,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          多项式学习笔记
+          [UNR#2] 黎明前的巧克力
         </h1>
 
         <div class="post-meta">
@@ -187,7 +184,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-08-05 15:35:28" itemprop="dateCreated datePublished" datetime="2022-08-05T15:35:28+08:00">2022-08-05</time>
+              <time title="创建时间：2023-11-21 20:33:44" itemprop="dateCreated datePublished" datetime="2023-11-21T20:33:44+08:00">2023-11-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -195,11 +192,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">算法学习</span></a>
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/UOJ/" itemprop="url" rel="index"><span itemprop="name">UOJ</span></a>
                 </span>
             </span>
 
@@ -221,12 +218,50 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本文为作者的学习笔记，其中主要包含作者学习时的一些笔记，以及一些例题。<del>如果有小伙伴看到这篇博客没有写完的话，那一定是我咕咕咕了。</del></p>
-<p>事实上这只是一个目录。</p>
+        <p>今天一个集训队互测的前置题，补了感觉不错，所以写篇题解（</p>
+<p><a target="_blank" rel="noopener" href="https://uoj.ac/problem/310">题目链接</a></p>
 <span id="more"></span>
-<p><a href="/FFT学习笔记/">FFT学习笔记</a></p>
-<p><a href="/NTT学习笔记/">NTT学习笔记</a></p>
-<p><a href="/FMT-FWT学习笔记/">FMT/FWT学习笔记</a></p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>现在有 $ n $ 块巧克力与两个人，第 $ i $ 块巧克力权值为 $ a_i $ 。</p>
+<p>定义一种选巧克力的方案是合法的，当且仅当：</p>
+<ol>
+<li>两个人选的巧克力不重复；</li>
+<li>两个人选的巧克力，权值的异或和相等；</li>
+<li>两个人加在一起，至少选择了一个巧克力。</li>
+</ol>
+<p>求合法方案数，对 $ 998244353 $ 取模。</p>
+<p>$ 1\le n\le 10^6 $</p>
+<p>$ 0\le a_i\le 10^6 $</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先会发现，两个人选的巧克力异或和相等，就相当于所有被选中的巧克力，异或和是 $ 0 $ 。</p>
+<p>那么对于每一个异或和为 $ 0 $ 的子集 $ S $ ，他的贡献就是 $ 2^{|S|} $ 。</p>
+<p>所以我们只需要算出上述值，并减去 $ 1 $ （空集）即可。</p>
+<p>暴力 dp 是容易的，这里就不写了。</p>
+<p>我们目前的主要目标是快速对所有异或和为 $ 0 $ 的子集计数。</p>
+<p>不难发现，这个很像 FWT 所能干的事情。考虑使用异或卷积去做。</p>
+<p>每一种数字 $ a_i $ 有两种选择：</p>
+<ol>
+<li>不选，对异或和有 $ 0 $ 的贡献，对权值有 $ 1 $ 的贡献；</li>
+<li>选，对异或和有 $ a_i $ 的贡献，对权值有 $ 2 $ 的贡献。</li>
+</ol>
+<p>所以我们可以构造出多项式 $ f_i $ ，其中 $ f_{i,j}=[j=0]\times 1+[j=a_i]\times 2 $ 。</p>
+<p>我们计算即可 $ f_1\ast f_2\ast\dots\ast f_n $ 即可，其中 $ \ast $ 为异或卷积。</p>
+<p>所以我们可以在 $ O(na\log a) $ 的复杂度内计算出答案（还不如暴力dp。</p>
+<p>仔细回想 FWT 的式子，对于一个多项式 $ f $ ：</p>
+<script type="math/tex; mode=display">
+FWT(f)_i=\sum_j(-1)^{\operatorname{popcount}(i\And j)f_j}</script><p> 而我们所有的多项式 $ f_i $ ，都最多只有两项。</p>
+<script type="math/tex; mode=display">
+FWT(f_i)_j=(-1)^{\operatorname{popcount}(j\And 0)}\times 1+(-1)^{\operatorname{popcount}(j\And a_i)}\times 2=1+(-1)^{\operatorname{popcount}(j\And a_i)}\times 2</script><p>这就意味着，多项式 $ FWT(f_i) $ 中，每一项的系数只能是 $ 3 $ 或 $ -1 $ 。</p>
+<hr>
+<p>下面才是这道题的重点。</p>
+<p>首先我们发现 $ FWT $ 具有分配律，即 $ FWT(f_i+f_j)=FWT(f_i)+FWT(f_j) $ 。</p>
+<p>那么就会有 $ FWT(f_1+f_2+\dots+f_n)=FWT(f_1)+FWT(f_2)+\dots FWT(f_n) $ 。</p>
+<p>这个式子是容易求的。我们设它是多项式 $ g $ 。</p>
+<p>而我们想要求的其实是 $ F=FWT(f_1)\times FWT(f_2)\times \dots\times FWT(f_n) $ ，其中 $ \times $ 是按位乘。</p>
+<p>根据前面的结论，我们又知道对于 $ F $ 的每一位 $ F_i $ ，它可以被表示为 $ F_i=3^x(-1)^{n-x} $ 的形式，并且我们知道 $ g_i=3x-(n-x) $ 。</p>
+<p>而我们已经知道 $ g_i $ 了，那么就有 $ x=\dfrac{g_i+n}{3} $ ，那我们就知道 $ F_i=3^{\frac{n+g_i}{4}}(-1)^{\frac{3n-g_i}{4}} $ 。</p>
+<p>这样，我们就可以把 $ F $ 求出来了。</p>
+<p>而 $ IFWT(F)_0 $ 就是答案，所以我们直接将得到的 $ F $ 做一个 $ IFWT $ 即可。</p>
+<p>时间复杂度 $ O(a\log a+n) $ 。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> s=<span class="number">0</span>,w=<span class="number">1</span>;<span class="type">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span>((ch=<span class="built_in">getchar</span>())&gt;<span class="string">&#x27;9&#x27;</span>||ch&lt;<span class="string">&#x27;0&#x27;</span>) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) w=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>) s=s*<span class="number">10</span>+ch-<span class="string">&#x27;0&#x27;</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">return</span> s*w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="type">const</span> ll inv2=(mod+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> L=<span class="number">1048576</span>;</span><br><span class="line">ll a[<span class="number">1048576</span>];</span><br><span class="line">ll p[<span class="number">1000001</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">FWT</span><span class="params">(<span class="type">int</span> typ)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> len=<span class="number">1</span>;len&lt;L;len&lt;&lt;=<span class="number">1</span>) <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;L;i++) <span class="keyword">if</span>(!(i&amp;len))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> num1=a[i],num2=a[i^len];</span><br><span class="line">        <span class="keyword">if</span>(typ) a[i]=num1+num2,a[i^len]=num1-num2;</span><br><span class="line">        <span class="keyword">else</span> a[i]=(num1+num2)*inv2%mod,a[i^len]=(num1-num2+mod)*inv2%mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(),p[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[<span class="number">0</span>]++,a[<span class="built_in">read</span>()]+=<span class="number">2</span>,p[i]=p[i<span class="number">-1</span>]*<span class="number">3</span>%mod;</span><br><span class="line">    <span class="built_in">FWT</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;L;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> A=(n+a[i])/<span class="number">4</span>,B=(<span class="number">3</span>*n-a[i])/<span class="number">4</span>;</span><br><span class="line">        a[i]=p[A];<span class="keyword">if</span>(B&amp;<span class="number">1</span>) a[i]=(mod-a[i])%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">FWT</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,(a[<span class="number">0</span>]<span class="number">-1</span>+mod)%mod);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -242,7 +277,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://shijiuwan.github.io/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="多项式学习笔记">http://shijiuwan.github.io/多项式学习笔记/</a>
+    <a href="http://shijiuwan.github.io/UNR2%E9%BB%8E%E6%98%8E%E5%89%8D%E7%9A%84%E5%B7%A7%E5%85%8B%E5%8A%9B/" title="[UNR#2] 黎明前的巧克力">http://shijiuwan.github.io/UNR2黎明前的巧克力/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -253,10 +288,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/FFT/" rel="tag"># FFT</a>
-              <a href="/tags/FMT/" rel="tag"># FMT</a>
               <a href="/tags/FWT/" rel="tag"># FWT</a>
-              <a href="/tags/NTT/" rel="tag"># NTT</a>
           </div>
 
         
@@ -265,13 +297,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/Catalan/" rel="prev" title="Catalan数">
-      <i class="fa fa-chevron-left"></i> Catalan数
+    <a href="/P8940/" rel="prev" title="[SSOI 2023 easy Round] 不见故人">
+      <i class="fa fa-chevron-left"></i> [SSOI 2023 easy Round] 不见故人
     </a></div>
-      <div class="post-nav-item">
-    <a href="/SNOI2019%E6%95%B0%E8%AE%BA/" rel="next" title="[SNOI2019] 数论">
-      [SNOI2019] 数论 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -331,6 +360,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -535,7 +565,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'shijiuwan.github.io',
       owner       : 'shijiuwan',
       admin       : ['shijiuwan'],
-      id          : '8d8c56c711c4737d651182b90dc4baca',
+      id          : '4e110c5139a83ce014764aa4f278d664',
         language: '',
       distractionFreeMode: true
     });
