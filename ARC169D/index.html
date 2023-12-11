@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/W3.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/W1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shijiuwan.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一道有趣结论题。 但是感觉官方题解说的真的有点糊。 题目链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARC169D">
+<meta property="og:url" content="http://shijiuwan.github.io/ARC169D/index.html">
+<meta property="og:site_name" content="Wuyanru&amp;#39s blog">
+<meta property="og:description" content="一道有趣结论题。 但是感觉官方题解说的真的有点糊。 题目链接">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-11T07:41:46.000Z">
+<meta property="article:modified_time" content="2023-12-11T07:41:46.000Z">
+<meta property="article:author" content="Wuyanru">
+<meta property="article:tag" content="结论题">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shijiuwan.github.io/ARC169D/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ARC169D | Wuyanru&#39s blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Wuyanru&#39s blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/ARC169D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Wuyanru.png">
+      <meta itemprop="name" content="Wuyanru">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuyanru&#39s blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ARC169D
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-12-11 15:41:46" itemprop="dateCreated datePublished" datetime="2023-12-11T15:41:46+08:00">2023-12-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/Atcoder/" itemprop="url" rel="index"><span itemprop="name">Atcoder</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>一道有趣结论题。</p>
+<p>但是感觉官方题解说的真的有点糊。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_arc169_d">题目链接</a></p>
+<span id="more"></span>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给定一个长度为 $ n $ 的数组 $ a_i $ 与一个数字 $ m $ ，你可以进行若干次操作：</p>
+<p>选中 $ m $ 个数字，并将他们 $ +1 $ ，若有数字到达 $ n $，则将这个数字变为 $ 0 $ 。</p>
+<p>求将 $ a $ 变为一个 $ 0\sim n-1 $ 的排列的最小次数，或输出无解。</p>
+<p>$ 1\le n\le 2.5\times 10^5 $</p>
+<p>$ 1\le m&lt;n $</p>
+<p>$ 0\le a_i&lt;n $</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>我们假设 $ a_i $ 在值为 $ n $ 时不会变成 $ 0 $ ，并令最后的结果为 $ b_i $ ，那么我们的最终目标是让 $ b_i\bmod n $ 互不相等。</p>
+<p>设 $ s=\sum\limits_{i=1}^nb_i-a_i $ ，考虑 $ b $ 合法的条件：</p>
+<ol>
+<li>$ m|s $；</li>
+<li>$ \forall 1\le i\le n:a_i\le b_i $；</li>
+<li>$ \forall 1\le i\le n:b_i-a_i\le \dfrac{s}{m} $ 。</li>
+</ol>
+<p>考虑在步数最小的情况下，我们求出一个 $ \sum b_i^2 $ 最小的 $ b $ 。</p>
+<p>可以证明，这个 $ b $ 一定是 $ (x,x+1,\dots,x+n-1) $ 的一个排列，可以使用反证法来证明：</p>
+<p>设当前 $ b $ 合法，满足步数最小且 $ \sum b_i^2 $ 最小，且存在 $ b_i-b_j&gt;n $ 。</p>
+<p>令 $ b’_i\gets b_j+n $ ，$ b’_j\gets b_i-n $ 。</p>
+<p>由于 $ b’^2_i+b’^2_j=b_j^2+b_i^2+2n^2+2nb_j-2nb_i=b_i^2+b_j^2+2n(n+b_j-b_i)&lt;b_i^2+b_j^2 $ ，所以 $ \sum b_i^2 $ 会变小。</p>
+<p>以前三个条件仍然满足：</p>
+<ol>
+<li><p>$ b’_i+b’_j=b_j+n+b_i-n=b_i+b_j $ ，所以 $ s $ 不变，所以仍然有 $ m|s $ ；</p>
+</li>
+<li><p>$ b’_i=b_j+n\ge n&gt;a_i $</p>
+<p>$ b’_j=b_i-n&gt;b_j\ge a_j $</p>
+<p>所以仍然有 $ b’_i\ge a_i $，$ b’_j\ge a_j $ ；</p>
+</li>
+<li><p>$ b’_i-a_i=b_j+n-a_i&lt;b_i-a_i\le \dfrac{s}{m} $ </p>
+<p>$ b’_j-a_j=b_i-n-a_i&lt;b_i-a_i\le \dfrac{s}{m} $</p>
+<p>所以仍然有 $ b’_i-a_i\le \dfrac{s}{m} $，$ b’_j-a_j\le \dfrac{s}{m} $ 。</p>
+</li>
+</ol>
+<p>综上所述，步数最小且 $ \sum b_i $ 最小的 $ b $ 一定为 $ (x,x+1,\dots,x+n-1) $ 的排列的形式。</p>
+<p>也就是说，我们只需要考虑 $ b $ 为 $ (x,x+1,\dots,x+n-1) $ 的排列的形式。</p>
+<p>首先我们将 $ a_i $ 从小到大排序，不难发现，此时的 $ b $ 递增是一定是最优的。</p>
+<p>所以我们只需要找出一个最小的 $ x $ ，使得 $ b_i=x+i-1 $ 的 $ b $ 满足条件。</p>
+<p>不难发现，条件 $ 2,3 $ 给出的是 $ x $ 的下界，设 $ p=\dfrac{n(n+1)}{2} $。</p>
+<p>对于条件 $ 2 $ ，有 $ b_i\ge a_i\Longleftrightarrow x+i-1\ge a_i\Longleftrightarrow x\ge a_i-i+1 $。</p>
+<p>对于条件 $ 3 $ ，有 $ b_i-a_i\le \dfrac{s}{m}\Longleftrightarrow x+i-1-a_i\le \dfrac{nx+p}{m}\Longleftrightarrow x\ge \left\lceil\dfrac{m(i-1-a_i)-p}{n-m}\right\rceil $。</p>
+<p>条件 $ 1 $ 则给出了关于 $ x $ 的额外限制，设 $ g=\gcd(n,m) $。</p>
+<p>$ m|s\Longleftrightarrow m|nx+p\Longleftrightarrow\exists k\in \mathbb{N}:km=nx+p\Longleftrightarrow \exists k\in \mathbb{N}:\dfrac{km}{g}=\dfrac{nx}{g}+\dfrac{p}{g}\Longleftrightarrow \dfrac{m}{g}|\dfrac{nx}{g}+\dfrac{p}{g} $ 。</p>
+<p>首先，若 $ g\nmid p$ ，则无解；否则，可以暴力枚举，算出 $ x\bmod \dfrac{m}{g} $ 的值（不存在则无解）。</p>
+<p>结合三个条件，便可以算出最小的 $ x $ ，便能算出最小的操作次数。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> inf 0x3f3f3f3f3f3f3f3fll</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> debug(x) cerr&lt;&lt;#x&lt;&lt;<span class="string">&quot;=&quot;</span>&lt;&lt;x&lt;&lt;endl</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="keyword">using</span> ld=<span class="type">long</span> <span class="type">double</span>;</span><br><span class="line"><span class="keyword">using</span> pli=pair&lt;ll,<span class="type">int</span>&gt;;</span><br><span class="line"><span class="keyword">using</span> pi=pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> A&gt;</span><br><span class="line"><span class="keyword">using</span> vc=vector&lt;A&gt;;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> s=<span class="number">0</span>,w=<span class="number">1</span>;<span class="type">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span>((ch=<span class="built_in">getchar</span>())&gt;<span class="string">&#x27;9&#x27;</span>||ch&lt;<span class="string">&#x27;0&#x27;</span>) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) w=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>) s=s*<span class="number">10</span>+ch-<span class="string">&#x27;0&#x27;</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">return</span> s*w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> a[<span class="number">250001</span>];</span><br><span class="line">ll s,ans;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>(),ans=-inf;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) s+=(a[i]=<span class="built_in">read</span>());</span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=n;i;i--) ans=<span class="built_in">max</span>(ans<span class="number">-1</span>,(ll)a[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ll A=(ll)n*(n<span class="number">-1</span>)/<span class="number">2</span>-s,B=(i<span class="number">-1</span>)-a[i];</span><br><span class="line">        ans=<span class="built_in">max</span>(ans,(m*B-A+n-m<span class="number">-1</span>)/(n-m));</span><br><span class="line">    &#125;</span><br><span class="line">    ll C=(s-(ll)n*(n<span class="number">-1</span>)/<span class="number">2</span>%m+m)%m;<span class="type">int</span> val=<span class="number">-1</span>,g=__gcd(n,m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m/g;i++) <span class="keyword">if</span>((ll)n/g*i%(m/g)*g==C)&#123; val=i;<span class="keyword">break</span>;&#125;</span><br><span class="line">    <span class="keyword">if</span>(val==<span class="number">-1</span>)&#123; <span class="built_in">printf</span>(<span class="string">&quot;-1\n&quot;</span>);<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line">    ans=(ans-val+(m/g)<span class="number">-1</span>)/(m/g)*(m/g)+val;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,((ll)n*(n<span class="number">-1</span>)/<span class="number">2</span>+ans*n-s)/m);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>感谢观看！</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Wuyanru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://shijiuwan.github.io/ARC169D/" title="ARC169D">http://shijiuwan.github.io/ARC169D/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BB%93%E8%AE%BA%E9%A2%98/" rel="tag"># 结论题</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/P8968/" rel="prev" title="[LGR-129] 觅光 | Searching for Hope">
+      <i class="fa fa-chevron-left"></i> [LGR-129] 觅光 | Searching for Hope
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wuyanru"
+      src="/images/Wuyanru.png">
+  <p class="site-author-name" itemprop="name">Wuyanru</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">博客</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">true</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '162b1f8e183db0079875',
+      clientSecret: '2e51dbf4433b06ff21c5fc15976425b75bd4d71b',
+      repo        : 'shijiuwan.github.io',
+      owner       : 'shijiuwan',
+      admin       : ['shijiuwan'],
+      id          : 'a6cad14c1f6cb8342a88205642683eba',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
