@@ -253,10 +253,10 @@
 <p>所以仍然有 $ b’_i-a_i\le \dfrac{s}{m} $，$ b’_j-a_j\le \dfrac{s}{m} $ 。</p>
 </li>
 </ol>
-<p>综上所述，步数最小且 $ \sum b_i $ 最小的 $ b $ 一定为 $ (x,x+1,\dots,x+n-1) $ 的排列的形式。</p>
+<p>综上所述，步数最小且 $ \sum b_i^2 $ 最小的 $ b $ 一定为 $ (x,x+1,\dots,x+n-1) $ 的排列的形式。</p>
 <p>也就是说，我们只需要考虑 $ b $ 为 $ (x,x+1,\dots,x+n-1) $ 的排列的形式。</p>
 <p>首先我们将 $ a_i $ 从小到大排序，不难发现，此时的 $ b $ 递增是一定是最优的。</p>
-<p>所以我们只需要找出一个最小的 $ x $ ，使得 $ b_i=x+i-1 $ 的 $ b $ 满足条件。</p>
+<p>所以我们只需要找出一个最小的 $ x $ ，使得 $ b_i=x+i-1 $ 的 $ b $ 满足上面的条件。</p>
 <p>不难发现，条件 $ 2,3 $ 给出的是 $ x $ 的下界，设 $ p=\dfrac{n(n+1)}{2} $。</p>
 <p>对于条件 $ 2 $ ，有 $ b_i\ge a_i\Longleftrightarrow x+i-1\ge a_i\Longleftrightarrow x\ge a_i-i+1 $。</p>
 <p>对于条件 $ 3 $ ，有 $ b_i-a_i\le \dfrac{s}{m}\Longleftrightarrow x+i-1-a_i\le \dfrac{nx+p}{m}\Longleftrightarrow x\ge \left\lceil\dfrac{m(i-1-a_i)-p}{n-m}\right\rceil $。</p>
@@ -304,7 +304,10 @@
     <a href="/P8968/" rel="prev" title="[LGR-129] 觅光 | Searching for Hope">
       <i class="fa fa-chevron-left"></i> [LGR-129] 觅光 | Searching for Hope
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/ABC332G/" rel="next" title="ABC332G">
+      ABC332G <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -380,7 +383,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">博客</span>
         </a>
       </div>
@@ -393,7 +396,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

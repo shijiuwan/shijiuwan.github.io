@@ -20,23 +20,20 @@
     var CONFIG = {"hostname":"shijiuwan.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="打模拟赛遇到的，同学都是一眼秒，只有我在乱七八糟贪。 最近已经遇到好几个题是一眼dp，但我没看出来了。 题目链接">
+  <meta name="description" content="又是我没见过的新 trick？ 应该也有别的做法吧。 题目链接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[JOI2015]舞踏会">
-<meta property="og:url" content="http://shijiuwan.github.io/JOI2015-%E8%88%9E%E8%B8%8F%E4%BC%9A/index.html">
+<meta property="og:title" content="ABC332G">
+<meta property="og:url" content="http://shijiuwan.github.io/ABC332G/index.html">
 <meta property="og:site_name" content="Wuyanru&amp;#39s blog">
-<meta property="og:description" content="打模拟赛遇到的，同学都是一眼秒，只有我在乱七八糟贪。 最近已经遇到好几个题是一眼dp，但我没看出来了。 题目链接">
+<meta property="og:description" content="又是我没见过的新 trick？ 应该也有别的做法吧。 题目链接">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://shijiuwan.github.io/pic/JOI2015_1.jpg">
-<meta property="article:published_time" content="2023-07-10T13:15:18.000Z">
-<meta property="article:modified_time" content="2023-07-10T13:15:18.000Z">
+<meta property="article:published_time" content="2023-12-15T12:06:43.000Z">
+<meta property="article:modified_time" content="2023-12-15T12:06:43.000Z">
 <meta property="article:author" content="Wuyanru">
-<meta property="article:tag" content="二分">
-<meta property="article:tag" content="dp">
+<meta property="article:tag" content="网络流">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://shijiuwan.github.io/pic/JOI2015_1.jpg">
 
-<link rel="canonical" href="http://shijiuwan.github.io/JOI2015-%E8%88%9E%E8%B8%8F%E4%BC%9A/">
+<link rel="canonical" href="http://shijiuwan.github.io/ABC332G/">
 
 
 <script id="page-configurations">
@@ -49,7 +46,7 @@
   };
 </script>
 
-  <title>[JOI2015]舞踏会 | Wuyanru&#39s blog</title>
+  <title>ABC332G | Wuyanru&#39s blog</title>
   
 
 
@@ -164,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/JOI2015-%E8%88%9E%E8%B8%8F%E4%BC%9A/">
+    <link itemprop="mainEntityOfPage" href="http://shijiuwan.github.io/ABC332G/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/Wuyanru.png">
@@ -177,7 +174,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          [JOI2015]舞踏会
+          ABC332G
         </h1>
 
         <div class="post-meta">
@@ -187,7 +184,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-07-10 21:15:18" itemprop="dateCreated datePublished" datetime="2023-07-10T21:15:18+08:00">2023-07-10</time>
+              <time title="创建时间：2023-12-15 20:06:43" itemprop="dateCreated datePublished" datetime="2023-12-15T20:06:43+08:00">2023-12-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -199,7 +196,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A2%98%E8%A7%A3/JOI/" itemprop="url" rel="index"><span itemprop="name">JOI</span></a>
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/Atcoder/" itemprop="url" rel="index"><span itemprop="name">Atcoder</span></a>
                 </span>
             </span>
 
@@ -221,43 +218,49 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>打模拟赛遇到的，同学都是一眼秒，只有我在乱七八糟贪。</p>
-<p>最近已经遇到好几个题是一眼dp，但我没看出来了。</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_joi2015ho_d">题目链接</a></p>
+        <p>又是我没见过的新 trick？</p>
+<p>应该也有别的做法吧。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc332_g">题目链接</a></p>
 <span id="more"></span>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>现在有 $ n $ 个人在一个队列里面，每一个人有一个能力值是 $ a_i $ ，保证 $ n $ 是奇数。</p>
-<p>每一次取出队列中最前面的三个人，去掉能力最大的和最小的，把剩下的那个人（中位数）放到队尾。</p>
-<p>最后剩下一个人的时候，留下的那个人就是这种排队方案的权值。</p>
-<p>现在已经有 $ m $ 个人确定了自己初始时在队列中的位置，你需要给剩下的 $ n-m $ 个人排好位置，使得权值最大。</p>
-<p>$ 3\le n&lt;99999 $</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先我们看到中位数，就能很明显想到二分。</p>
-<p>所以我们二分，现在问题变成了：每个人能力值为 $ 0 $ 或 $ 1 $ ，能否使最后的权值是 $ 1 $ 。</p>
-<p>这个问题似乎不太好做，我们来模拟一下，假如当前队列中人的编号为 $ 1\sim 9 $ ，我们来模拟这个过程。</p>
-<p>初始时，队列为：$ [1,2,3,4,5,6,7,8,9] $ 。</p>
-<p>首先拿出前三个人，并将中位数插入队尾。我们并不知道哪个人是中位数。</p>
-<p>所以我们可以稍微转化一下操作，把他变成这个样子：</p>
-<p>把队列的前三个人一起拿走，并且加入一个新人，能力值为前三个人的中位数。</p>
-<p>所以我们现在假设加入的人是 $ 10 $ 号。</p>
-<p>队列为： $ [4,5,6,7,8,9,10] $ 。</p>
-<p>依次执行这个过程，得到：</p>
-<p>$ [7,8,9,10,11] $ </p>
-<p>$ [10,11,12] $ </p>
-<p>$ [13] $ </p>
-<p>所以我们的问题就是 $ 13 $ 号人能力是否能为 $ 1 $ 。</p>
-<p>通过这个模拟的过程，我们完全可以知道每一个人的能力值是由哪三个人决定的，我们把图画出来。</p>
-<p><img src="/pic/JOI2015_1.jpg" alt=""></p>
-<p>我们发现，这种关系一定会是一个树状的结构。</p>
-<p>同时，我们考虑到权值只有 $ 0 $ 和 $ 1 $ ，发现实际就是在问，能否合理地分配 $ 1 $ 的位置，使得根的权值为 $ 1 $ 。</p>
-<p>那么我们考虑对其进行树形dp。</p>
-<p>设 $ dp_i $ 表示，如果要让 $ i $ 的权值为 $ 1 $ ，至少需要在子树内额外放置多少个 $ 1 $ 。</p>
-<p>当 $ i $ 为叶节点，且上面已经有一个 $ 1 $ 时，不需要多余填，这里的值就是 $ 1 $ ，所以 $ dp_i=0 $ ；</p>
-<p>当 $ i $ 为叶节点，且上面已经有一个 $ 0 $ 时，这个位置不可能是 $ 1 $ ，那么 $ dp_i=+\infty $ ；</p>
-<p>当 $ i $ 为叶节点，且上面时还没有填数字时，$ dp_i=1 $ ；</p>
-<p>否则假设 $ i $ 的三个儿子为 $ a,b,c $ ，那么 $ dp_i=\min(dp_a+dp_b,dp_a+dp_c,dp_b+dp_c)=dp_a+dp_b+dp_c-\max(dp_a,dp_b,dp_c) $ 。</p>
-<p>假如我们有 $ x $ 个 $ 1 $ 暂未放置，那么在 $ dp_r\le x $ 时有解。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>实际上在写的时候，不需要建树。</p>
-<p>直接使用队列进行模拟即可。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> inf 0x3f3f3f3f3f3f3f3fll</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> s=<span class="number">0</span>,w=<span class="number">1</span>;<span class="type">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span>((ch=<span class="built_in">getchar</span>())&gt;<span class="string">&#x27;9&#x27;</span>||ch&lt;<span class="string">&#x27;0&#x27;</span>) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) w=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>) s=s*<span class="number">10</span>+ch-<span class="string">&#x27;0&#x27;</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">return</span> s*w;</span><br><span class="line">&#125;</span><br><span class="line">ll dp[<span class="number">200001</span>];</span><br><span class="line"><span class="type">int</span> a[<span class="number">100001</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">100001</span>];</span><br><span class="line"><span class="type">int</span> c0,c1;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">bool</span> <span class="title">cal</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    c0=c1=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n-m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b[i]&gt;=num) c1++;</span><br><span class="line">        <span class="keyword">else</span> c0++;</span><br><span class="line">    &#125;</span><br><span class="line">    queue&lt;<span class="type">int</span>&gt;que;<span class="type">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ++cnt;</span><br><span class="line">        <span class="keyword">if</span>(a[i]==<span class="number">-1</span>) dp[cnt]=<span class="number">1</span>,que.<span class="built_in">push</span>(cnt);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a[i]&gt;=num) dp[cnt]=<span class="number">0</span>,que.<span class="built_in">push</span>(cnt);</span><br><span class="line">        <span class="keyword">else</span> dp[cnt]=<span class="number">0x3f3f3f3f</span>,que.<span class="built_in">push</span>(cnt);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(que.<span class="built_in">size</span>()&gt;<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a1=que.<span class="built_in">front</span>();que.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> a2=que.<span class="built_in">front</span>();que.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> a3=que.<span class="built_in">front</span>();que.<span class="built_in">pop</span>();</span><br><span class="line">        cnt++,dp[cnt]=dp[a1]+dp[a2]+dp[a3]-<span class="built_in">max</span>(dp[a1],<span class="built_in">max</span>(dp[a2],dp[a3]));</span><br><span class="line">        que.<span class="built_in">push</span>(cnt);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[que.<span class="built_in">front</span>()]&lt;=c1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>();</span><br><span class="line">    <span class="built_in">memset</span>(a,<span class="number">-1</span>,<span class="built_in">sizeof</span>(a));</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x=<span class="built_in">read</span>(),y=<span class="built_in">read</span>();</span><br><span class="line">        a[y]=x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n-m;i++) b[i]=<span class="built_in">read</span>();</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>&lt;&lt;<span class="number">30</span>;i;i&gt;&gt;=<span class="number">1</span>) <span class="keyword">if</span>(<span class="built_in">cal</span>(ans+i)) ans+=i;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>现在有 $ n $ 种球和 $ m $ 个盒子，第 $ i $ 种球有 $ a_i $ 个，第 $ j $ 个箱子里最多放 $ b_j $ 个球。</p>
+<p>除此之外，第 $ j $ 个箱子里最多放 $ i\times j $ 个第 $ i $ 种球。</p>
+<p>求最多能放多少个球。</p>
+<p>$ 1\le n\le 500 $</p>
+<p>$ 1\le m\le 5\times 10^5 $</p>
+<p>$ 1\le a_i,b_i\le 10^{12} $</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这个问题看上去就可以流，但是显然会 T。</p>
+<p>我们不妨把这个图建出来。</p>
+<p>这张图共有 $ n+m+2 $ 个点，分别为源点 $ s $，汇点 $ t $，代表第 $ i $ 种小球的点 $ x_i $，以及代表第 $ j $ 个箱子的点 $ y_j $ 。</p>
+<p>边也分为三种：</p>
+<ol>
+<li>边 $ s\to x_i $ ，流量为 $ a_i $ ；</li>
+<li>边 $ y_j\to t $ ，流量为 $ b_j $ ；</li>
+<li>边 $ x_i\to y_j $ ，流量为 $ i\times j $ 。</li>
+</ol>
+<p><del>显然，直接跑是不行的。</del></p>
+<p>众所周知，最大流与最小割相等，那么存不存在什么快速的方法，求出这张图的最小割呢？</p>
+<p>为方便使用公式，我们首先定义 $ X\gets \{x_1,x_2,\dots,x_n\} $ 为左部点的集合，$ Y\gets \{y_1,y_2,\dots,y_m\} $ 为右部点的集合。</p>
+<p>考虑枚举 $ X $ 中与源点 $ s $ 联通的点集 $ P $，枚举 $ Y $ 中与汇点 $ t $ 联通的点集 $ Q $，那么对于上述的三种边：</p>
+<ol>
+<li>对于边 $ s\to x_i $ ，若 $ x_i\notin P $ ，则需要割掉这条边，价值为 $ a_i $ ；</li>
+<li>对于边 $ y_j\to t $ ，若 $ t_i \notin Q $ ，则需要割掉这条边，价值为 $ b_j $ ；</li>
+<li>对于边 $ x_i\to y_j $ ，若 $ x_i\in P\vee y_j\in Q $ ，则需要割掉这条边，价值为 $ i\times j $ 。</li>
+</ol>
+<p>那么我们就可以将最小割的值用一个式子表示出来！</p>
+<script type="math/tex; mode=display">
+\min_{P\subseteq X}\min_{Q\subseteq Y}\left(\sum_{x_i\notin P}a_i+\sum_{y_j\notin Q}b_j+\sum_{x_i\in P}\sum_{y_j\in Q}ij\right)</script><p>不太好算，考虑枚举 $ k=\sum\limits_{x_i\in P}i $ 的值。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\min_{P\subseteq X}\min_{Q\subseteq Y}\left(\sum_{x_i\notin P}a_i+\sum_{y_j\notin Q}b_j+\sum_{x_i\in P}\sum_{y_j\in Q}ij\right)\\
+=&\min_{P\subseteq X}\min_{Q\subseteq Y}\left(\sum_{x_i\notin P}a_i+\sum_{y_j\notin Q}b_j+\sum_{x_i\in P}i\sum_{y_j\in Q}j\right)\\
+=&\min_{k=0}^{\frac{n(n-1)}{2}}\min_{P\subseteq X\vee \sum_{x_i\in P}i=k}\min_{Q\subseteq Y}\left(\sum_{x_i\notin P}a_i+\sum_{y_j\notin Q}b_j+\sum_{x_i\in P}i\sum_{y_j\in Q}j\right)\\
+=&\min_{k=0}^{\frac{n(n-1)}{2}}\min_{P\subseteq X\vee \sum_{x_i\in P}i=k}\min_{Q\subseteq Y}\left(\sum_{x_i\notin P}a_i+\sum_{y_j\notin Q}b_j+\sum_{y_j\in Q}kj\right)\\
+=&\min_{k=0}^{\frac{n(n-1)}{2}}\min_{P\subseteq X\vee \sum_{x_i\in P}i=k}\left(\sum_{x_i\notin P}a_i+\min_{Q\subseteq Y}\left(\sum_{y_j\notin Q}b_j+\sum_{y_j\in Q}kj\right)\right)\\
+=&\min_{k=0}^{\frac{n(n-1)}{2}}\min_{P\subseteq X\vee \sum_{x_i\in P}i=k}\left(\sum_{x_i\notin P}a_i+\sum_{j=1}^m\min(b_j,kj)\right)\\
+\end{aligned}</script><p>考虑枚举 $ k $ 的值，那么前面关于 $ a $ 的部分可以使用 dp 计算。</p>
+<p>后面的值，对于每一个 $ j $ 来说都是一个分段函数，也是容易计算的。</p>
+<p>时间复杂度 $ O(n^3+nm) $ 。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> inf 0x3f3f3f3f3f3f3f3fll</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll=<span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> s=<span class="number">0</span>,w=<span class="number">1</span>;<span class="type">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span>((ch=<span class="built_in">getchar</span>())&gt;<span class="string">&#x27;9&#x27;</span>||ch&lt;<span class="string">&#x27;0&#x27;</span>) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) w=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>) s=s*<span class="number">10</span>+ch-<span class="string">&#x27;0&#x27;</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">return</span> s*w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">lread</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll s=<span class="number">0</span>,w=<span class="number">1</span>;<span class="type">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span>((ch=<span class="built_in">getchar</span>())&gt;<span class="string">&#x27;9&#x27;</span>||ch&lt;<span class="string">&#x27;0&#x27;</span>) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) w=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>) s=s*<span class="number">10</span>+ch-<span class="string">&#x27;0&#x27;</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">return</span> s*w;</span><br><span class="line">&#125;</span><br><span class="line">ll prek[<span class="number">150001</span>];</span><br><span class="line">ll preb[<span class="number">150001</span>];</span><br><span class="line">ll dp[<span class="number">150001</span>];</span><br><span class="line">ll b[<span class="number">500001</span>];</span><br><span class="line">ll a[<span class="number">501</span>];</span><br><span class="line"><span class="type">int</span> n,m,Lim;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>(),Lim=(ll)n*(n+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">    <span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="built_in">sizeof</span>(dp)),dp[Lim]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        a[i]=<span class="built_in">lread</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j+i&lt;=Lim;j++) dp[j]=<span class="built_in">min</span>(dp[j],dp[j+i]+a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        b[j]=<span class="built_in">lread</span>();ll s=b[j]/j;</span><br><span class="line">        prek[<span class="number">1</span>]+=j;</span><br><span class="line">        <span class="keyword">if</span>(s&lt;Lim) prek[s+<span class="number">1</span>]-=j,preb[s+<span class="number">1</span>]+=b[j];</span><br><span class="line">    &#125;</span><br><span class="line">    ll ans=inf;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=Lim;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        prek[i]+=prek[i<span class="number">-1</span>],preb[i]+=preb[i<span class="number">-1</span>];</span><br><span class="line">        ans=<span class="built_in">min</span>(ans,dp[i]+prek[i]*i+preb[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>感谢观看！</p>
 
     </div>
@@ -274,7 +277,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://shijiuwan.github.io/JOI2015-%E8%88%9E%E8%B8%8F%E4%BC%9A/" title="[JOI2015]舞踏会">http://shijiuwan.github.io/JOI2015-舞踏会/</a>
+    <a href="http://shijiuwan.github.io/ABC332G/" title="ABC332G">http://shijiuwan.github.io/ABC332G/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -285,8 +288,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E4%BA%8C%E5%88%86/" rel="tag"># 二分</a>
-              <a href="/tags/dp/" rel="tag"># dp</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="tag"># 网络流</a>
           </div>
 
         
@@ -295,13 +297,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/NOI2023%E6%B8%B8%E8%AE%B0/" rel="prev" title="NOI2023游记">
-      <i class="fa fa-chevron-left"></i> NOI2023游记
+    <a href="/ARC169D/" rel="prev" title="ARC169D">
+      <i class="fa fa-chevron-left"></i> ARC169D
     </a></div>
-      <div class="post-nav-item">
-    <a href="/NOI2022%E4%BC%97%E6%95%B0/" rel="next" title="[NOI2022] 众数">
-      [NOI2022] 众数 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -566,7 +565,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'shijiuwan.github.io',
       owner       : 'shijiuwan',
       admin       : ['shijiuwan'],
-      id          : 'd581671ec0c554f068744b3ba4b8328d',
+      id          : '6056c7a7246bba786244841022346c8c',
         language: '',
       distractionFreeMode: true
     });
