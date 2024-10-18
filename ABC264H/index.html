@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"shijiuwan.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一个比较简单的 dp。 从暴力到正解实际上只有一个第一眼感觉没用的小优化。 题目链接">
+  <meta name="description" content="一个比较简单的 dp。 从暴力到正解实际上只有一个第一眼感觉没用的小优化。 题目链接。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ABC264H">
+<meta property="og:title" content="[ABC264Ex] Perfect Binary Tree">
 <meta property="og:url" content="http://shijiuwan.github.io/ABC264H/index.html">
 <meta property="og:site_name" content="Wuyanru&amp;#39s blog">
-<meta property="og:description" content="一个比较简单的 dp。 从暴力到正解实际上只有一个第一眼感觉没用的小优化。 题目链接">
+<meta property="og:description" content="一个比较简单的 dp。 从暴力到正解实际上只有一个第一眼感觉没用的小优化。 题目链接。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-13T18:40:41.000Z">
 <meta property="article:modified_time" content="2022-08-13T18:40:41.000Z">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>ABC264H | Wuyanru&#39s blog</title>
+  <title>[ABC264Ex] Perfect Binary Tree | Wuyanru&#39s blog</title>
   
 
 
@@ -286,7 +286,7 @@ mjx-container[display="true"] + br {
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          ABC264H
+          [ABC264Ex] Perfect Binary Tree
         </h1>
 
         <div class="post-meta">
@@ -332,7 +332,7 @@ mjx-container[display="true"] + br {
       
         <p>一个比较简单的 dp。</p>
 <p>从暴力到正解实际上只有一个第一眼感觉没用的小优化。</p>
-<p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc264/tasks/abc264_h">题目链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc264_h">题目链接</a>。</p>
 <span id="more"></span>
 <h2 id="题意">题意</h2>
 <p>给了你一棵有根树，现在让你在 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="5.327ex" height="1.595ex" role="img" focusable="false" viewBox="0 -694 2354.6 705"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(777.8,0)"><path data-c="223C" d="M55 166Q55 241 101 304T222 367Q260 367 296 349T362 304T421 252T484 208T554 189Q616 189 655 236T694 338Q694 350 698 358T708 367Q722 367 722 334Q722 260 677 197T562 134H554Q517 134 481 152T414 196T355 248T292 293T223 311Q179 311 145 286Q109 257 96 218T80 156T69 133Q55 133 55 166Z"></path></g><g data-mml-node="mi" transform="translate(1833.6,0)"><path data-c="1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path></g></g></g></svg></mjx-container></span> 中选一些点，满足以下要求：</p>
@@ -379,7 +379,7 @@ mjx-container[display="true"] + br {
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://shijiuwan.github.io/ABC264H/" title="ABC264H">http://shijiuwan.github.io/ABC264H/</a>
+    <a href="http://shijiuwan.github.io/ABC264H/" title="[ABC264Ex] Perfect Binary Tree">http://shijiuwan.github.io/ABC264H/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -403,8 +403,8 @@ mjx-container[display="true"] + br {
       <i class="fa fa-chevron-left"></i> 积性函数
     </a></div>
       <div class="post-nav-item">
-    <a href="/ABC218H/" rel="next" title="ABC218H">
-      ABC218H <i class="fa fa-chevron-right"></i>
+    <a href="/ABC218H/" rel="next" title="[ABC218H] Red and Blue Lamps">
+      [ABC218H] Red and Blue Lamps <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -481,7 +481,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">博客</span>
         </a>
       </div>
